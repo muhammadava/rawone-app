@@ -32,11 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('/dashboard')->group(function () {
-        Route::get( '/margonda', [MargondaController::class, 'index'] )->name( 'margonda' );
-        Route::get( '/simatupang', [SimatupangController::class, 'index'] )->name( 'simatupang' );
-        Route::get( '/gudang', [WarehouseController::class, 'index'] )->name( 'gudang' );
-    });
+        Route::resource( '/margonda', MargondaController::class );
+        Route::post( '/margonda', [MargondaController::class, 'store'] );
 
+        Route::resource( '/simatupang', SimatupangController::class );
+
+        Route::resource( '/gudang', WarehouseController::class );
+    });
 });
 
 require __DIR__.'/auth.php';

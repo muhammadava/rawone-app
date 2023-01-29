@@ -16,9 +16,9 @@
         <li class="nav-item">
           <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Laporan Harian</a>
           <nav class="az-menu-sub">
-            <a href="{{ route( 'margonda' ) }}" class="nav-link">Margonda</a>
-            <a href="{{ route( 'simatupang' ) }}" class="nav-link">Simatupang</a>
-            <a href="{{ route( 'gudang' ) }}" class="nav-link">Gudang</a>
+            <a href="/dashboard/margonda" class="nav-link">Margonda</a>
+            <a href="/dashboard/simatupang" class="nav-link">Simatupang</a>
+            <a href="/dashboard/gudang" class="nav-link">Gudang</a>
           </nav>
         </li>
         <li class="nav-item">

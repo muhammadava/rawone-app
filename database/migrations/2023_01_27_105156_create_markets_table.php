@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer( 'times_id' );
             $table->integer( 'markets_id' );
-            $table->longText( 'name' );
+            $table->enum( 'name', ['telur_asin', 'jeruk_nipis', 'jeruk_limo', 'timun', 'tomat' ] );
             $table->integer( 'price' );
             $table->integer( 'qty' );
             $table->dateTime( 'date_time' );
