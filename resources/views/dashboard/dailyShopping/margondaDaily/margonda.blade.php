@@ -41,7 +41,7 @@
           <span>Forms</span>
           <span>Form Elements</span>
         </div>
-        <h2 class="az-content-title">Data - data margonda</h2>
+        <h2 class="az-content-title">Data Margonda</h2>
 
         <div class="card b-20">
           <div class="card-header d-flex bd-highlight mb-3">
@@ -66,12 +66,12 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Form Tambah Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="/margonda" method="post">
+                  <form action="{{ route( 'margonda.store' ) }}" method="post">
                     @csrf
                     <div class="modal-body"><!-- start modal body -->
 
@@ -80,7 +80,7 @@
                         <div class="col-sm-4"><!-- start col -->
                           
                           <div class="mg-b-20">
-                            <p class="mg-b-10">Pilih nama pasar</p>
+                            <p class="mg-b-10 text-center">Pasar</p>
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
                               <option value="telur_asin">telur asin</option>
@@ -96,7 +96,7 @@
                         <div class="col-sm-4"><!-- start col -->
 
                           <div class="mg-b-20">
-                            <p class="mg-b-10">Pilih nama outlet</p>
+                            <p class="mg-b-10 text-center">Outlet</p>
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
                               <option value="telur_ayam">telur ayam</option>
@@ -112,7 +112,7 @@
                         <div class="col-sm-4"><!-- start col -->
 
                           <div class="mg-b-20">
-                            <p class="mg-b-10">Pilih nama gudang</p>
+                            <p class="mg-b-10 text-center">Gudang</p>
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
                               <option value="kuah_rawon">kuah rawon</option>

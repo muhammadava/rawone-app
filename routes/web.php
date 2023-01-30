@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/dashboard')->group(function () {
         Route::resource( '/margonda', MargondaController::class );
-        Route::post( '/margonda', [MargondaController::class, 'store'] );
+        Route::post( '/margonda', [MargondaController::class, 'store'] )->name( 'margonda.store' );
 
         Route::resource( '/simatupang', SimatupangController::class );
 

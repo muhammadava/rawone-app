@@ -13,13 +13,9 @@ return new class extends Migration {
     public function up() {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->integer( 'times_id' );
-            $table->integer( 'warehouses_id' );
-            $table->enum( 'name', [ 'kuah_rawon', 'daging', 'dengkul' ] );
-            $table->integer( 'price' );
-            $table->integer( 'qty' );
-            $table->dateTime( 'date_time' );
+            $table->longText( 'name' );
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
