@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Market extends Model {
     use HasFactory, SoftDeletes;
-    protected $guarded = [];
-    protected $fillable = [
-        'name'
-    ];
+    protected $hidden = [];
+    public function marketdetails() {
+        return $this->hasMany( market_details::class, 'markets_id' );
+    }
 }

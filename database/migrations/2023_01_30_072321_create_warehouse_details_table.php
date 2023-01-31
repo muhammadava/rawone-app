@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('warehouse_details', function (Blueprint $table) {
             $table->id();
-            $table->int( 'warehouses_id' );
+            $table->integer( 'warehouses_id' );
             $table->integer( 'price' );
             $table->integer( 'qty' );
             $table->softDeletes();
