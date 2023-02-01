@@ -13,9 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('markets', function (Blueprint $table) {
             $table->id();
-            $table->longText( 'name' );
-            $table->softDeletes();
-            $table->timestamps();
+            $table->enum( 'name', [ 'timun', 'tomat', 'wortel' ] );
         });
     }
 

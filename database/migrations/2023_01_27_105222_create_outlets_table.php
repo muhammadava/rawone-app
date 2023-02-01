@@ -13,9 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
-            $table->longText( 'name' );
-            $table->softDeletes();
-            $table->timestamps();
+            $table->enum( 'name', [ 'roti_tawar', 'es_batu', 'freshmilk' ] );
         });
     }
 

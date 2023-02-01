@@ -83,14 +83,12 @@
                             <p class="mg-b-10 text-center">Pasar</p>
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
-                              <option value="telur_asin">telur asin</option>
-                              <option value="jeruk_nipis">jeruk nipis</option>
-                              <option value="jeruk_limo">jeruk limo</option>
                               <option value="timun">timun</option>
                               <option value="tomat">tomat</option>
+                              <option value="wortel">wortel</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
                           <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
@@ -99,14 +97,12 @@
                             <p class="mg-b-10 text-center">Outlet</p>
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
-                              <option value="telur_ayam">telur ayam</option>
-                              <option value="es_batu">es batu</option>
-                              <option value="roti">roti</option>
                               <option value="roti_tawar">roti tawar</option>
+                              <option value="es_batu">es batu</option>
                               <option value="freshmilk">freshmilk</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
                           <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
@@ -116,11 +112,11 @@
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
                               <option value="kuah_rawon">kuah rawon</option>
-                              <option value="daging">daging</option>
                               <option value="dengkul">dengkul</option>
+                              <option value="daging">daging</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
                           <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
                         </div><!-- end col -->
 
@@ -153,7 +149,7 @@
                     @foreach( $markets as $market )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $market->name }}</td>
+                        <td>{{ $market->marketdetails->name }}</td>
                         <td>{{ $market->price }}</td>
                         <td>{{ $market->qty }}</td>
                       </tr>

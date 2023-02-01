@@ -14,9 +14,7 @@ return new class extends Migration {
         // warehousedaily untuk laporan sales gudang.
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer( 'times_id' );
             $table->enum( 'name', [ 'market', 'outlet', 'warehouse', 'margonda', 'kelapa_gading', 'simatupang', 'warehouse_daily', 'sales' ] );
-            $table->softDeletes();
         });
     }
 

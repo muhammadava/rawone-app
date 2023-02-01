@@ -4,11 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Market extends Model {
-    use HasFactory, SoftDeletes;
-    protected $hidden = [];
+    use HasFactory;
+    protected $fillabel = [
+        'name'
+    ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $guarded = [];
     public function marketdetails() {
         return $this->hasMany( market_details::class, 'markets_id' );
     }

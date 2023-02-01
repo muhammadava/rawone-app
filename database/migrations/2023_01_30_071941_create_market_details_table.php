@@ -16,8 +16,6 @@ return new class extends Migration {
             $table->integer( 'markets_id' );
             $table->integer( 'price' );
             $table->integer( 'qty' );
-            $table->softDeletes();
-            $table->timestamps();
         });
     }
 

@@ -4,9 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Warehouse extends Model {
-    use HasFactory, SoftDeletes;
-    protected $hidden = [];
+    use HasFactory;
+    protected $fillabel = [
+        'name'
+    ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $guarded = [];
+    public function warehousedetails() {
+        return $this->hasMany( warehouse_details::class, 'warehouses_id' );
+    }
 }

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('times', function (Blueprint $table) {
             $table->id();
             $table->date( 'date' );
-            $table->softDeletes();
         });
     }
 
