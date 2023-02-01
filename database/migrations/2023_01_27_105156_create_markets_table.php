@@ -14,6 +14,7 @@ return new class extends Migration {
         Schema::create('markets', function (Blueprint $table) {
             $table->id();
             $table->enum( 'name', [ 'timun', 'tomat', 'wortel' ] );
+            $table->integer( 'price' );
         });
     }
 

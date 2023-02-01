@@ -4,13 +4,9 @@ namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 use App\Models\Market;
-use App\Models\MarketDetail;
 use App\Models\Outlet;
-use App\Models\OutletDetail;
 use App\Models\Warehouse;
-use App\Models\WarehouseDetail;
 
 class MargondaController extends Controller {
     /**
@@ -42,11 +38,8 @@ class MargondaController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required'
-        ]);
-        $request->validate([
-            'price' => 'required',
-            'qty' => 'required'
+            'name' => 'required',
+            'price' => 'required'
         ]);
       
         Market::create($request->all());

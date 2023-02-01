@@ -88,8 +88,7 @@
                               <option value="wortel">wortel</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
-                          <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -102,8 +101,7 @@
                               <option value="freshmilk">freshmilk</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
-                          <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -116,8 +114,7 @@
                               <option value="daging">daging</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number"  min="1" max="7">
-                          <input class="form-control" name="qty" placeholder="Masukan qty" type="number">
+                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
 
                       </div><!-- end row -->
@@ -143,15 +140,13 @@
                       <tr>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Qty</th>
                       </tr>
                     </thead>
                     @foreach( $markets as $market )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $market->marketdetails->name }}</td>
+                        <td>{{ $market->name }}</td>
                         <td>{{ $market->price }}</td>
-                        <td>{{ $market->qty }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -166,7 +161,6 @@
                       <tr>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Qty</th>
                       </tr>
                     </thead>
                     @foreach( $outlets as $outlet )
@@ -174,7 +168,6 @@
                       <tr>
                         <td>{{ $outlet->name }}</td>
                         <td>{{ $outlet->price }}</td>
-                        <td>{{ $outlet->qty }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -189,7 +182,6 @@
                       <tr>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Qty</th>
                       </tr>
                     </thead>
                     @foreach( $warehouses as $warehouse )
@@ -197,7 +189,6 @@
                       <tr>
                         <td>{{ $warehouse->name }}</td>
                         <td>{{ $warehouse->price }}</td>
-                        <td>{{ $warehouse->qty }}</td>
                       </tr>
                     </tbody>
                     @endforeach

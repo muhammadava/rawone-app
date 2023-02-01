@@ -8,14 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Market extends Model {
     use HasFactory;
     protected $fillabel = [
-        'name'
+        'name', 'price'
     ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
     protected $guarded = [];
-    public function marketdetails() {
-        return $this->hasMany( market_details::class, 'markets_id' );
-    }
 }

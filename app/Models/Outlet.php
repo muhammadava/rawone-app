@@ -5,18 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Outlet extends Model {
     use HasFactory;
     protected $fillabel = [
-        'name'
+        'name', 'price'
     ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
     protected $guarded = [];
-    public function outletdetails() {
-        return $this->hasMany( outlet_details::class, 'outlets_id' );
-    }
 }

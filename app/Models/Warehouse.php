@@ -8,14 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Warehouse extends Model {
     use HasFactory;
     protected $fillabel = [
-        'name'
+        'name', 'price'
     ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
     protected $guarded = [];
-    public function warehousedetails() {
-        return $this->hasMany( warehouse_details::class, 'warehouses_id' );
-    }
 }
