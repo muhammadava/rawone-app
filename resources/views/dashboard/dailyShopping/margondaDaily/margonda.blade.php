@@ -94,27 +94,27 @@
 
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Outlet</p>
-                            <select class="form-control select2-no-search" name="name">
+                            <select class="form-control select2-no-search" name="name[]">
                               <option label="Pilih satu"></option>
                               <option value="roti_tawar">roti tawar</option>
                               <option value="es_batu">es batu</option>
                               <option value="freshmilk">freshmilk</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="name[]" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Gudang</p>
-                            <select class="form-control select2-no-search" name="name">
+                            <select class="form-control select2-no-search" name="name[]">
                               <option label="Pilih satu"></option>
                               <option value="kuah_rawon">kuah rawon</option>
                               <option value="dengkul">dengkul</option>
                               <option value="daging">daging</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="name[]" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
 
                       </div><!-- end row -->

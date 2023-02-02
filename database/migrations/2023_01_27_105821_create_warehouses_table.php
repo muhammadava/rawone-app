@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->enum( 'name', [ 'kuah_rawon', 'dengkul', 'daging' ] );
             $table->integer( 'price' );
+            $table->timestamps();
         });
     }
 

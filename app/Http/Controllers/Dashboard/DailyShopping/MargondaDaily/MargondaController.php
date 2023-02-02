@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Market;
 use App\Models\Outlet;
 use App\Models\Warehouse;
@@ -39,13 +40,33 @@ class MargondaController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'name' => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ]);
-      
-        Market::create($request->all());
-        MarketDetail::create($request->all());
-       
-        return redirect()->route('dashboard.dailyShopping.margondaDaily.margonda')->with('sukses', 'Data berhasil di tambahkan.');
+
+        $market = new Market;
+        $market->name = $request->name;
+        $market->price = $request->price;
+        $market->save();
+
+        $id = DB::table( 'outlets' )->where( 'id' )->first();
+        
+        foreach( $item as $key => $items ) {
+            $Outlet[ 'name' ] = $request->name[ $key ];
+            $Outlet[ 'price' ] = $request->price[ $key ];
+
+            Outlet::create( $Outlet );
+        }
+
+        $id = DB::table( 'warehouses' )->where( 'id' )->first();
+        
+        foreach( $item as $key => $items ) {
+            $Warehouse[ 'name' ] = $request->name[ $key ];
+            $Warehouse[ 'price' ] = $request->price[ $key ];
+
+            Warehouse::create( $Warehouse );
+        }
+
+        return redirect()->route('dashboard.dailyShopping.margondaDaily.margonda')->with('success', 'Post created successfully.');
     }
 
     /**

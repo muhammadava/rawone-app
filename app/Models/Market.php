@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Market extends Model {
     use HasFactory;
+    public $timestamps = false;
     protected $fillabel = [
-        'name', 'price'
+        'name', 'price',
     ];
-    protected $hidden = [];
-    protected $guarded = [];
 }
