@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Warehouse extends Model {
     use HasFactory;
     public $timestamps = false;
-    protected $fillabel = [
+    protected $fillable = [
         'name', 'price',
     ];
 }

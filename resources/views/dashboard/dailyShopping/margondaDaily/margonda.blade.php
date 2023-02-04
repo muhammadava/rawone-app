@@ -71,7 +71,8 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="{{ route( 'margonda.store' ) }}" method="post">
+                  <form action="{{ route( 'margonda.store', $ $outlets->id, $warehouses->id ) }}" method="post">
+                    @method( 'POST' )
                     @csrf
                     <div class="modal-body"><!-- start modal body -->
 
@@ -101,7 +102,7 @@
                               <option value="freshmilk">freshmilk</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="name[]" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -114,7 +115,7 @@
                               <option value="daging">daging</option>
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="name[]" placeholder="Masukan harga" type="number">
+                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="number">
                         </div><!-- end col -->
 
                       </div><!-- end row -->

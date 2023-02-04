@@ -37,7 +37,7 @@ class MargondaController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request, $id) {
         $request->validate([
             'name' => 'required',
             'price' => 'required',
@@ -48,22 +48,24 @@ class MargondaController extends Controller {
         $market->price = $request->price;
         $market->save();
 
-        $id = DB::table( 'outlets' )->where( 'id' )->first();
-        
-        foreach( $item as $key => $items ) {
-            $Outlet[ 'name' ] = $request->name[ $key ];
-            $Outlet[ 'price' ] = $request->price[ $key ];
+        $id = DB::table( 'outlets' )->select( 'id' )->first();
+        $id = $id->id;
 
-            Outlet::create( $Outlet );
+        foreach( $item as $key => $items ) {
+            $outlet[ 'name' ] = implode(',', $request->input( name[ $key ]) );
+            $outlet[ 'price' ] = implode(',', $request->input( price[ $key ]) );
+
+            Outlet::create( $outlet );
         }
 
-        $id = DB::table( 'warehouses' )->where( 'id' )->first();
-        
-        foreach( $item as $key => $items ) {
-            $Warehouse[ 'name' ] = $request->name[ $key ];
-            $Warehouse[ 'price' ] = $request->price[ $key ];
+        $id = DB::table( 'warehouses' )->select( 'id' )->first();
+        $id = $id->id;
 
-            Warehouse::create( $Warehouse );
+        foreach( $item as $key => $items ) {
+            $warehouse[ 'name' ] = implode(',', $request->input( name[ $key ]) );
+            $warehouse[ 'price' ] = implode(',', $request->input( price[ $key ]) );
+
+            Warehouse::create( $warehouse );
         }
 
         return redirect()->route('dashboard.dailyShopping.margondaDaily.margonda')->with('success', 'Post created successfully.');
