@@ -68,7 +68,7 @@ class MargondaController extends Controller {
             Warehouse::create( $warehouse );
         }
 
-        return redirect()->route('dashboard.dailyShopping.margondaDaily.margonda')->with('success', 'Post created successfully.');
+        return redirect(route('dashboard.dailyShopping.margondaDaily.margonda'))->with('success', 'Post created successfully.');
     }
 
     /**

@@ -71,13 +71,12 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="{{ route( 'margonda.store', $ $outlets->id, $warehouses->id ) }}" method="post">
-                    @method( 'POST' )
+                  <form action="{{ route( 'margondaStore' ) }}" method="post">
                     @csrf
                     <div class="modal-body"><!-- start modal body -->
 
                       <div class="row"><!-- start row -->
-
+                        
                         <div class="col-sm-4"><!-- start col -->
                           
                           <div class="mg-b-20">
