@@ -9,6 +9,10 @@ class Warehouse extends Model {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'name', 'price'
+        'name'
     ];
+
+    public function warehousedetails() {
+        return $this->hasMany( WarehouseDetail::class, 'warehouses_id' );
+    }
 }

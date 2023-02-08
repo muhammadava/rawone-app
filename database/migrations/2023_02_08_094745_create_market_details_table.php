@@ -13,6 +13,8 @@ return new class extends Migration {
     public function up() {
         Schema::create('market_details', function (Blueprint $table) {
             $table->id();
+            $table->integer( 'markets_id' );
+            $table->string( 'price' )->nullable();
             $table->timestamps();
         });
     }

@@ -9,6 +9,10 @@ class Outlet extends Model {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'name', 'price'
+        'name'
     ];
+
+    public function outletdetails() {
+        return $this->hasMany( OutletDetail::class, 'outlets_id' );
+    }
 }

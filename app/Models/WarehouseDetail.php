@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WarehouseDetail extends Model
-{
+class WarehouseDetail extends Model {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'price'
+    ];
+
+    public function warehouses() {
+        return $this->belongsTo( Warehouse::class, 'warehouses_id', 'id' );
+    }
 }
