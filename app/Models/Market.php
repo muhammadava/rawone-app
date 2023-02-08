@@ -9,6 +9,6 @@ class Market extends Model {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'name', 'price',
+        'name', 'price'
     ];
 }

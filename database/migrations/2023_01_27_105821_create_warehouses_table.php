@@ -13,8 +13,9 @@ return new class extends Migration {
     public function up() {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
+            $table->string( 'warehouse_number' )->nullable();
             $table->enum( 'name', [ 'kuah_rawon', 'dengkul', 'daging' ] );
-            $table->integer( 'price' );
+            $table->string( 'price' )->nullable();
             $table->timestamps();
         });
     }

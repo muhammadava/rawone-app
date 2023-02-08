@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use App\Models\Market;
 use App\Models\Outlet;
 use App\Models\Warehouse;
@@ -16,9 +18,9 @@ class MargondaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $markets = Market::where('id');
-        $outlets = Outlet::where('id');
-        $warehouses = Warehouse::where('id');
+        $markets = Market::all();
+        $outlets = Outlet::all();
+        $warehouses = Warehouse::all();
         return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses' ) );
     }
 
@@ -37,32 +39,32 @@ class MargondaController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id) {
+    public function store(Request $request) {
         $request->validate([
             'name' => 'required',
             'price' => 'required',
         ]);
 
-        $markets = new Market;
-        $markets->name = $request->name;
+        $collection = collect([
+            ['id' => 1, 'name' => 'timun', 'timun', 'wortel'],
+        ]);
+        $collection->implode( 'name',', ' );
+        $markets = $collection;
         $markets->price = $request->price;
-        $markets->save();
 
-        foreach( $id as $key => $items ) {
-            $outlets = new Outlet;
-            $outlets[ 'name' ] = $request->name[ $key ];
-            $outlets[ 'price' ] = $request->price[ $key ];
+        $collection = collect([
+            ['id' => 1, 'name' => 'roti_tawar', 'es_batu', 'freshmilk'],
+        ]);
+        $collection->implode( 'name',', ' );
+        $outlets = $collection;
+        $outlets[ 'price' ] = $request->price[ 'price' ];
 
-            Outlet::create( $outlets );
-        }
-
-        foreach( $item as $key => $items ) {
-            $warehouses = new Warehouse;
-            $warehouses[ 'name' ] = $request->name[ $key ];
-            $warehouses[ 'price' ] = $request->price[ $key ];
-
-            Warehouse::create( $warehouses );
-        }
+        $collection = collect([
+            ['id' => 1, 'name' => 'kuah_rawon', 'dengkul', 'daging'],
+        ]);
+        $collection->implode( 'name',', ' );
+        $warehouses = $collection;
+        $warehouses[ 'price' ] = $request->price[ 'price' ];
 
         return redirect(route('dashboard.dailyShopping.margondaDaily.margonda'))->with('success', 'Post created successfully.');
     }

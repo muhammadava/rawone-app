@@ -13,8 +13,9 @@ return new class extends Migration {
     public function up() {
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
+            $table->string( 'outlet_number' )->nullable();
             $table->enum( 'name', [ 'roti_tawar', 'es_batu', 'freshmilk' ] );
-            $table->integer( 'price' );
+            $table->string( 'price' )->nullable();
             $table->timestamps();
         });
     }
