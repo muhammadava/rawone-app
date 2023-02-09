@@ -46,7 +46,7 @@ class MargondaController extends Controller {
         ]);
 
         $collection = collect([
-            ['id' => 1, 'name' => 'timun', 'timun', 'wortel'],
+            ['id' => 1, 'name' => 'timun', 'tomat', 'wortel'],
         ]);
         $collection->implode( 'name',', ' );
         $markets = $collection;
