@@ -13,7 +13,8 @@ return new class extends Migration {
     public function up() {
         Schema::create('outlet_details', function (Blueprint $table) {
             $table->id();
-            $table->integer( 'outlets_id' );
+            $table->Integer( 'outlets_id' );
+            $table->smallInteger( 'kat' )->comment( '1=pilihan 1, 2=pilihan 2, 3=pilihan 3' );
             $table->string( 'price' )->nullable();
             $table->timestamps();
         });

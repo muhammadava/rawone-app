@@ -84,8 +84,6 @@
                             <select class="form-control select2-no-search" name="name">
                               <option label="Pilih satu"></option>
                               <option value="timun">timun</option>
-                              <option value="tomat">tomat</option>
-                              <option value="wortel">wortel</option>
                             </select>
                           </div>
                           <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="text">
@@ -97,8 +95,6 @@
                             <select class="form-control select2-no-search" name="name[]">
                               <option label="Pilih satu"></option>
                               <option value="roti_tawar">roti tawar</option>
-                              <option value="es_batu">es batu</option>
-                              <option value="freshmilk">freshmilk</option>
                             </select>
                           </div>
                           <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
@@ -109,9 +105,9 @@
                             <p class="mg-b-10 text-center">Gudang</p>
                             <select class="form-control select2-no-search" name="name[]">
                               <option label="Pilih satu"></option>
-                              <option value="kuah_rawon">kuah rawon</option>
-                              <option value="dengkul">dengkul</option>
-                              <option value="daging">daging</option>
+                              @foreach( $warehouses as $datawarehouse )
+                              <option value="{{ $datawarehouse->id }}">{{ $datawarehouse->name }}</option>
+                              @endforeach
                             </select>
                           </div>
                           <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
