@@ -8,9 +8,10 @@ use App\Models\Market;
 
 class MarketDetail extends Model {
     use HasFactory;
+    protected $table = 'market_details';
     public $timestamps = false;
     protected $fillable = [
-        'price'
+        'markets_id', 'price'
     ];
 
     public function markets() {

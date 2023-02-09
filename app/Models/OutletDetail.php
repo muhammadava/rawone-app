@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class OutletDetail extends Model {
     use HasFactory;
+    protected $table = 'outlet_details';
     public $timestamps = false;
     protected $fillable = [
-        'price'
+        'outlets_id', 'price'
     ];
 
     public function outlets() {

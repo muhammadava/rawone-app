@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Outlet extends Model {
     use HasFactory;
+    protected $table = 'outlets';
     public $timestamps = false;
     protected $fillable = [
         'name'

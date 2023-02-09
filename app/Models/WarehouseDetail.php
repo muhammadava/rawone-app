@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class WarehouseDetail extends Model {
     use HasFactory;
+    protected $table = 'warehouse_details';
     public $timestamps = false;
     protected $fillable = [
-        'price'
+        'warehouses_id', 'price'
     ];
 
     public function warehouses() {

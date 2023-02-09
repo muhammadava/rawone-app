@@ -8,6 +8,7 @@ use App\Models\MarketDetail;
 
 class Market extends Model {
     use HasFactory;
+    protected $table = 'markets';
     public $timestamps = false;
     protected $fillable = [
         'name'

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
+use Auth;
 use Illuminate\Support\Str;
 use App\Models\Market;
+use App\Models\MarketDetail;
 use App\Models\Outlet;
+use App\Models\OutletDetail;
 use App\Models\Warehouse;
+use App\Models\WarehouseDetail;
 
 class MargondaController extends Controller {
     /**
@@ -21,7 +24,17 @@ class MargondaController extends Controller {
         $markets = Market::all();
         $outlets = Outlet::all();
         $warehouses = Warehouse::all();
-        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses' ) );
+        $join_markets = DB::table('market_details')
+                ->join('markets', 'markets.id', '=', 'market_details.markets_id')
+                ->get();
+        $join_outlets = DB::table('outlet_details')
+                ->join('outlets', 'outlets.id', '=', 'outlet_details.outlets_id')
+                ->get();
+        $join_warehouses = DB::table('warehouse_details')
+                ->join('warehouses', 'warehouses.id', '=', 'warehouse_details.warehouses_id')
+                ->get();
+
+        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses', 'join_markets', 'join_outlets', 'join_warehouses' ) );
     }
 
     /**
@@ -44,29 +57,26 @@ class MargondaController extends Controller {
             'name' => 'required',
             'price' => 'required',
         ]);
+        
+        $join_markets = new MarketDetail;
+        $join_markets->user_id = Auth::user()->id;
+        $join_markets->markets_id = $request->input( 'name' );
+        $join_markets->price = $request->input( 'price' );
+        $join_markets->save();
 
-        $collection = collect([
-            ['id' => 1, 'name' => 'timun', 'tomat', 'wortel'],
-        ]);
-        $collection->implode( 'name',', ' );
-        $markets = $collection;
-        $markets->price = $request->price;
+        $join_outlets = new OutletDetail;
+        $join_outlets->user_id = Auth::user()->id;
+        $join_outlets->outlets_id = $request->input( 'name' );
+        $join_outlets->price = $request->input( 'price' );
+        $join_outlets->save(); 
 
-        $collection = collect([
-            ['id' => 1, 'name' => 'roti_tawar', 'es_batu', 'freshmilk'],
-        ]);
-        $collection->implode( 'name',', ' );
-        $outlets = $collection;
-        $outlets[ 'price' ] = $request->price[ 'price' ];
+        $join_warehouses = new WarehouseDetail;
+        $join_warehouses->user_id = Auth::user()->id;
+        $join_warehouses->warehouses_id = $request->input( 'name' );
+        $join_warehouses->price = $request->input( 'price' );
+        $join_warehouses->save();
 
-        $collection = collect([
-            ['id' => 1, 'name' => 'kuah_rawon', 'dengkul', 'daging'],
-        ]);
-        $collection->implode( 'name',', ' );
-        $warehouses = $collection;
-        $warehouses[ 'price' ] = $request->price[ 'price' ];
-
-        return redirect(route('dashboard.dailyShopping.margondaDaily.margonda'))->with('success', 'Post created successfully.');
+        return redirect::back();
     }
 
     /**

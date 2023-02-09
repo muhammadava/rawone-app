@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->foreignId( 'markets_id' )
                 ->constrained( 'markets' )
                 ->onDelete( 'cascade' );
-            $table->smallInteger( 'kat' )->comment( '1=pilihan 1, 2=pilihan 2, 3=pilihan 3' );
             $table->string( 'price' )->nullable();
             $table->timestamps();
         });
