@@ -10,7 +10,7 @@ class OutletDetail extends Model {
     protected $table = 'outlet_details';
     public $timestamps = false;
     protected $fillable = [
-        'outlets_id', 'price'
+        'price'
     ];
 
     public function outlets() {

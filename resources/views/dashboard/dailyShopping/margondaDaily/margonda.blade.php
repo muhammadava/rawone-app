@@ -88,7 +88,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="text">
+                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -101,7 +101,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="text">
+                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -114,7 +114,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price" placeholder="Masukan harga" type="text">
+                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
 
                       </div><!-- end row -->

@@ -58,23 +58,47 @@ class MargondaController extends Controller {
             'price' => 'required',
         ]);
         
-        $join_markets = new MarketDetail;
-        $join_markets->user_id = Auth::user()->id;
-        $join_markets->markets_id = $request->input( 'name' );
-        $join_markets->price = $request->input( 'price' );
-        $join_markets->save();
+        foreach( $request->price as $key => $value ){
+            $join_markets = new MarketDetail;
+            $join_markets->user_id = Auth::user()->id;
+            $join_markets->markets_id = $request->input( 'name' );
+            $join_markets->price = $request->input( 'price' )[$key];
+            $join_markets->save();
+        }
 
-        $join_outlets = new OutletDetail;
-        $join_outlets->user_id = Auth::user()->id;
-        $join_outlets->outlets_id = $request->input( 'name' );
-        $join_outlets->price = $request->input( 'price' );
-        $join_outlets->save(); 
+        foreach( $request->price as $key => $value ){
+            $join_outlets = new OutletDetail;
+            $join_outlets->user_id = Auth::user()->id;
+            $join_outlets->outlets_id = $request->input( 'name' );
+            $join_outlets->price = $request->input( 'price' )[$key];
+            $join_outlets->save();
+        }
 
-        $join_warehouses = new WarehouseDetail;
-        $join_warehouses->user_id = Auth::user()->id;
-        $join_warehouses->warehouses_id = $request->input( 'name' );
-        $join_warehouses->price = $request->input( 'price' );
-        $join_warehouses->save();
+        foreach( $request->price as $key => $value ){
+            $join_warehouses = new WarehouseDetail;
+            $join_warehouses->user_id = Auth::user()->id;
+            $join_warehouses->warehouses_id = $request->input( 'name' );
+            $join_warehouses->price = $request->input( 'price' )[$key];
+            $join_warehouses->save();
+        }
+
+        // $join_markets = new MarketDetail;
+        // $join_markets->user_id = Auth::user()->id;
+        // $join_markets->markets_id = $request->input( 'market_name' );
+        // $join_markets->market_price = $request->input( 'market_price' );
+        // $join_markets->save();
+
+        // $join_outlets = new OutletDetail;
+        // $join_outlets->user_id = Auth::user()->id;
+        // $join_outlets->outlets_id = $request->input( 'outlet_name' );
+        // $join_outlets->outlet_price = $request->input( 'outlet_price' );
+        // $join_outlets->save();
+
+        // $join_warehouses = new WarehouseDetail;
+        // $join_warehouses->user_id = Auth::user()->id;
+        // $join_warehouses->warehouses_id = $request->input( 'warehouse_name' );
+        // $join_warehouses->warehouse_price = $request->input( 'warehouse_price' );
+        // $join_warehouses->save();
 
         return redirect::back();
     }
