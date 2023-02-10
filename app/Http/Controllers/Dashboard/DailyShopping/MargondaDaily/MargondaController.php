@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use Illuminate\Support\Str;
+use PDF;
+use Illuminate\Http\Request;
 use App\Models\Market;
 use App\Models\MarketDetail;
 use App\Models\Outlet;
