@@ -34,10 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/dashboard')->group(function () {
         Route::resource( '/margonda', MargondaController::class );
         Route::post( '/margonda', [MargondaController::class, 'store'] )->name( 'margondaStore' );
-
         Route::resource( '/simatupang', SimatupangController::class );
-
         Route::resource( '/gudang', WarehouseController::class );
+
+        /* Route laporan gudang */
+
+        
+        /* Route seluruh laporan */
     });
 });
 

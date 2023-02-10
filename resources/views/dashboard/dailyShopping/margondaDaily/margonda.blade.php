@@ -1,12 +1,9 @@
 @extends('dashboard.master')
 @push('styles')
-<link href="{{ asset( '../lib/spectrum-colorpicker/spectrum.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/select2/css/select2.min.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/ion-rangeslider/css/ion.rangeSlider.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/amazeui-datetimepicker/css/amazeui.datetimepicker.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/jquery-simple-datetimepicker/jquery.simple-dtpicker.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( '../lib/pickerjs/picker.min.css' ) }}" rel="stylesheet">   
+<link href="{{ asset( '../lib/select2/css/select2.min.css' ) }}" rel="stylesheet">
+<link href="{{ asset( '../lib/amazeui-datetimepicker/css/amazeui.datetimepicker.css' ) }}" rel="stylesheet">
+<link href="{{ asset( '../lib/jquery-simple-datetimepicker/jquery.simple-dtpicker.css' ) }}" rel="stylesheet">
+<link href="{{ asset( '../lib/pickerjs/picker.min.css' ) }}" rel="stylesheet">   
 @endpush
 
 @section( 'content' )

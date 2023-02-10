@@ -45,6 +45,7 @@
     <link href="{{ asset('../lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('../lib/typicons.font/typicons.css') }}" rel="stylesheet">
     <link href="{{ asset('../lib/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('../lib/line-awesome/css/line-awesome.min.css') }}" rel="stylesheet">
 
     <!-- azia CSS -->
     <link rel="stylesheet" href="{{ asset('../css/azia.css') }}">

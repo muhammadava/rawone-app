@@ -71,8 +71,6 @@ class MargondaController extends Controller {
         $join_warehouses->warehouses_id = $request->input( 'name' );
         $join_warehouses->warehouse_price = $request->input( 'warehouse_price' );
         $join_warehouses->save();
-
-        return redirect::back();
     }
 
     /**

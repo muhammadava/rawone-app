@@ -11,10 +11,10 @@
       </div><!-- az-header-menu-header -->
       <ul class="nav">
         <li class="nav-item active show">
-          <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+          <a href="/dashboard" class="nav-link"><i class="la la-home pr-2"></i>Dashboard</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Laporan Harian</a>
+          <a href="" class="nav-link with-sub"><i class="far fa-file-alt pr-2"></i>Laporan Harian</a>
           <nav class="az-menu-sub">
             <a href="/dashboard/margonda" class="nav-link">Margonda</a>
             <a href="/dashboard/simatupang" class="nav-link">Simatupang</a>
@@ -22,28 +22,26 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
+          <a href="" class="nav-link"><i class="far fa-clipboard pr-2"></i>Laporan Gudang</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub"><i class="icon ion-md-paper pr-2"></i>Laporan Outlet</a>
           <nav class="az-menu-sub">
-            <a href="page-signin.html" class="nav-link">Sign In</a>
-            <a href="page-signup.html" class="nav-link">Sign Up</a>
+            <a href="" class="nav-link">Outlet Margonda</a>
+            <a href="" class="nav-link">Outlet Simatupang</a>
+            <a href="" class="nav-link">Outlet Kelapa Gading</a>
           </nav>
         </li>
         <li class="nav-item">
-          <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
-        </li>
-        <li class="nav-item">
-          <a href="form-elements.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Forms</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link with-sub"><i class="typcn typcn-book"></i> Components</a>
+          <a href="" class="nav-link with-sub"><i class="typcn typcn-document-text pr-2"></i>Seluruh Laporan</a>
           <div class="az-menu-sub">
             <div class="container">
               <div>
                 <nav class="nav">
-                  <a href="elem-buttons.html" class="nav-link">Buttons</a>
-                  <a href="elem-dropdown.html" class="nav-link">Dropdown</a>
-                  <a href="elem-icons.html" class="nav-link">Icons</a>
-                  <a href="table-basic.html" class="nav-link">Table</a>
+                  <a href="" class="nav-link">Buttons</a>
+                  <a href="" class="nav-link">Dropdown</a>
+                  <a href="" class="nav-link">Icons</a>
+                  <a href="" class="nav-link">Table</a>
                 </nav>
               </div>
             </div><!-- container -->
