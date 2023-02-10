@@ -203,18 +203,21 @@
 @endsection
 
 @push( 'scripts' )
+    <script src="{{ asset('../lib/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset( '../lib/jquery-ui/ui/widgets/datepicker.js' ) }}"></script>
     <script src="{{ asset( '../lib/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script>
     <script src="{{ asset( '../lib/ionicons/ionicons.js' ) }}"></script>
+    <script src="{{ asset('../lib/jquery.flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('../lib/jquery.flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset( '../lib/jquery.maskedinput/jquery.maskedinput.js' ) }}"></script>
-    <script src="{{ asset( '../lib/spectrum-colorpicker/spectrum.js' ) }}"></script>
     <script src="{{ asset( '../lib/select2/js/select2.min.js' ) }}"></script>
-    <script src="{{ asset( '../lib/ion-rangeslider/js/ion.rangeSlider.min.js' ) }}"></script>
     <script src="{{ asset( '../lib/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js' ) }}"></script>
     <script src="{{ asset( '../lib/jquery-simple-datetimepicker/jquery.simple-dtpicker.js' ) }}"></script>
     <script src="{{ asset( '../lib/pickerjs/picker.min.js' ) }}"></script>
-
+    
     <script src="{{ asset( '../js/azia.js' ) }}"></script>
+    <script src="{{ asset('../js/dashboard.sampledata.js') }}"></script>
+    <script src="{{ asset('../js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script>
         // Additional code for adding placeholder in search box of select2
         (function($) {
