@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->foreignId( 'outlets_id' )
                 ->constrained( 'outlets' )
                 ->onDelete( 'cascade' );
-            $table->string( 'price' )->nullable();
+            $table->string( 'outlet_price' )->nullable();
             $table->timestamps();
         });
     }

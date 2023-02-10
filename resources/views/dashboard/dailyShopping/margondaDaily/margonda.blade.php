@@ -88,7 +88,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
+                            <input class="form-control mg-b-20" name="market_price" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -101,7 +101,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
+                            <input class="form-control mg-b-20" name="outlet_price" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -114,7 +114,7 @@
                               @endforeach
                             </select>
                           </div>
-                          <input class="form-control mg-b-20" name="price[]" placeholder="Masukan harga" type="text">
+                            <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
 
                       </div><!-- end row -->
@@ -146,7 +146,7 @@
                     <tbody align="center">
                       <tr>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->market_price }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -167,7 +167,7 @@
                     <tbody align="center">
                       <tr>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->outlet_price }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -188,7 +188,7 @@
                     <tbody align="center">
                       <tr>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->warehouse_price }}</td>
                       </tr>
                     </tbody>
                     @endforeach
