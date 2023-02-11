@@ -67,6 +67,10 @@
       </div><!-- container -->
     </div><!-- az-footer -->
 
+    <script src="{{ asset('../lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('../lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('../js/azia.js') }}"></script>
+    <script src="{{ asset('../js/jquery.cookie.js" type="text/javascript') }}"></script>
     @stack( 'scripts' )
   </body>
 </html>

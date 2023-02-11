@@ -33,19 +33,7 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link with-sub"><i class="typcn typcn-document-text pr-2"></i>Seluruh Laporan</a>
-          <div class="az-menu-sub">
-            <div class="container">
-              <div>
-                <nav class="nav">
-                  <a href="" class="nav-link">Buttons</a>
-                  <a href="" class="nav-link">Dropdown</a>
-                  <a href="" class="nav-link">Icons</a>
-                  <a href="" class="nav-link">Table</a>
-                </nav>
-              </div>
-            </div><!-- container -->
-          </div>
+          <a href="{{ route( 'allreports' ) }}" class="nav-link"><i class="typcn typcn-document-text pr-2"></i>Semua Laporan</a>
         </li>
       </ul>
     </div><!-- az-header-menu -->

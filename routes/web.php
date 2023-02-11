@@ -7,6 +7,9 @@ use App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily\MargondaControlle
 use App\Http\Controllers\Dashboard\DailyShopping\SimatupangDaily\SimatupangController;
 use App\Http\Controllers\Dashboard\DailyShopping\WarehouseDaily\WarehouseController;
 
+use App\Http\Controllers\Dashboard\AllReports\ReportsController;
+use App\Http\Controllers\Dashboard\AllReports\MargondaReport\MargondaReportController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
         
         /* Route seluruh laporan */
+        Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );
+
+        Route::get( '/semua-laporan/laporan-margonda', [MargondaReportController::class, 'index'] )->name( 'margondareport' );
     });
 });
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use PDF;
