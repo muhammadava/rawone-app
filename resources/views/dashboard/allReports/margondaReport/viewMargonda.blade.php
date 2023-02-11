@@ -9,29 +9,16 @@
             <th>Nama</th>
             <th>Harga</th>
         </tr>
-            @foreach( $join_markets as $market => $item )
-            @foreach( $join_outlets as $outlet => $item )
-            @foreach( $join_warehouses as $warehouse => $item )
+            @foreach( $join_tables as $all )
                 <tr>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->market_price }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->outlet_price }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->warehouse_price }}</td>
+                    <td>{{ $all->name }}</td>
+                    <td>{{ $all->market_price }}</td>
+                    <td>{{ $all->name }}</td>
+                    <td>{{ $all->outlet_price }}</td>
+                    <td>{{ $all->name }}</td>
+                    <td>{{ $all->warehouse_price }}</td>
                 </tr>
             @endforeach
-            @endforeach
-            @endforeach
-            <!-- @foreach( $join_outlets as $outlet => $item )
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->outlet_price }}</td>
-            @endforeach
-            @foreach( $join_warehouses as $warehouse => $item )
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->warehouse_price }}</td>
-            @endforeach -->
-            </tr>
     </table>
 
 </div>

@@ -13,6 +13,7 @@ use App\Models\Outlet;
 use App\Models\OutletDetail;
 use App\Models\Warehouse;
 use App\Models\WarehouseDetail;
+use App\Models\Reports;
 
 class MargondaController extends Controller {
     /**
@@ -71,8 +72,17 @@ class MargondaController extends Controller {
         $join_warehouses->warehouse_price = $request->input( 'warehouse_price' );
         $join_warehouses->save();
 
-        return redirect()->back();
+        $join_tables = new Reports;
+        $join_tables->user_id = Auth::user()->id;
+        $join_tables->markets_id = $request->input( 'markets_id' );        
+        $join_tables->outlets_id = $request->input( '_id' );        
+        $join_tables->warehouses_id = $request->input( 'name' );
+        $join_tables->market_price = $request->input( 'market_price' );
+        $join_tables->outlet_price = $request->input( 'outlet_price' );
+        $join_tables->warehouse_price = $request->input( 'warehouse_price' );
+        $join_tables->save();
 
+        return redirect()->back();
     }
 
     /**
