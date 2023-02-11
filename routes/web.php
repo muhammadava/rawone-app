@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );
 
         Route::get( '/semua-laporan/laporan-margonda', [MargondaReportController::class, 'index'] )->name( 'margondareport' );
+        Route::get( '/semua-laporan/laporan-margonda/view-pdf-margonda', [MargondaReportController::class, 'cetakPDF'] )->name( 'viewPDFMargonda' );
     });
 });
 
