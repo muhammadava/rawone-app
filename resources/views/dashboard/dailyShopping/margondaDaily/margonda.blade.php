@@ -72,10 +72,10 @@
                           
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Pasar</p>
-                            <select class="form-control select2-no-search" name="name">
+                            <select class="form-control select2-no-search" name="market_name">
                               <option label="Pilih satu"></option>
                               @foreach( $markets as $market )
-                                <option value="{{ $market->id }}">{{ $market->name }}</option>
+                                <option value="{{ $market->id }}">{{ $market->market_name }}</option>
                               @endforeach
                             </select>
                           </div>
@@ -85,10 +85,10 @@
 
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Outlet</p>
-                            <select class="form-control select2-no-search" name="name">
+                            <select class="form-control select2-no-search" name="outlet_name">
                               <option label="Pilih satu"></option>
                               @foreach( $outlets as $outlet )
-                                <option value="{{ $outlet->id }}">{{ $outlet->name }}</option>
+                                <option value="{{ $outlet->id }}">{{ $outlet->outlet_name }}</option>
                               @endforeach
                             </select>
                           </div>
@@ -98,10 +98,10 @@
 
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Gudang</p>
-                            <select class="form-control select2-no-search" name="name">
+                            <select class="form-control select2-no-search" name="warehouse_name">
                               <option label="Pilih satu"></option>
                               @foreach( $warehouses as $warehouse )
-                                <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                <option value="{{ $warehouse->id }}">{{ $warehouse->warehouse_name }}</option>
                               @endforeach
                             </select>
                           </div>
@@ -136,7 +136,7 @@
                     @foreach( $join_markets as $market => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->market_name }}</td>
                         <td>{{ $item->market_price }}</td>
                       </tr>
                     </tbody>
@@ -157,7 +157,7 @@
                     @foreach( $join_outlets as $outlet => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->outlet_name }}</td>
                         <td>{{ $item->outlet_price }}</td>
                       </tr>
                     </tbody>
@@ -178,7 +178,7 @@
                     @foreach( $join_warehouses as $warehouse => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->warehouse_name }}</td>
                         <td>{{ $item->warehouse_price }}</td>
                       </tr>
                     </tbody>

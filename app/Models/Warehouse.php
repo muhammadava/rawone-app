@@ -11,7 +11,7 @@ class Warehouse extends Model {
     protected $table = 'warehouses';
     public $timestamps = false;
     protected $fillable = [
-        'name'
+        'warehouse_name'
     ];
 
     public function warehousedetails() {

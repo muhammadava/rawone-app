@@ -11,7 +11,7 @@ class Outlet extends Model {
     protected $table = 'outlets';
     public $timestamps = false;
     protected $fillable = [
-        'name'
+        'outlet_name'
     ];
 
     public function outletdetails() {

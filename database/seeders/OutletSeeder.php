@@ -14,15 +14,15 @@ class OutletSeeder extends Seeder {
      */
     public function run() {
         DB::table('outlets')->insert([
-            'name' => 'roti_tawar'
+            'outlet_name' => 'Roti tawar'
         ]);
 
         DB::table('outlets')->insert([
-            'name' => 'es_batu'
+            'outlet_name' => 'Es batu'
         ]);
 
         DB::table('outlets')->insert([
-            'name' => 'freshmilk'
+            'outlet_name' => 'Freshmilk'
         ]);
     }
 }

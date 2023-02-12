@@ -32,7 +32,7 @@
                     @foreach( $join_markets as $market => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->market_name }}</td>
                         <td>{{ $item->market_price }}</td>
                       </tr>
                     </tbody>
@@ -53,7 +53,7 @@
                     @foreach( $join_outlets as $outlet => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->outlet_name }}</td>
                         <td>{{ $item->outlet_price }}</td>
                       </tr>
                     </tbody>
@@ -74,7 +74,7 @@
                     @foreach( $join_warehouses as $warehouse => $item )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->warehouse_name }}</td>
                         <td>{{ $item->warehouse_price }}</td>
                       </tr>
                     </tbody>

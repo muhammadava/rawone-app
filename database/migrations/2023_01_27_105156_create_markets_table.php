@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('markets', function (Blueprint $table) {
             $table->id();
-            $table->string( 'name', 50 )->unique();
+            $table->string( 'market_name', 50 )->unique();
             $table->timestamps();
         });
     }

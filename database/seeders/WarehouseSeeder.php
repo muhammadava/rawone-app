@@ -14,15 +14,15 @@ class WarehouseSeeder extends Seeder {
      */
     public function run() {
         DB::table('warehouses')->insert([
-            'name' => 'kuah_rawon'
+            'warehouse_name' => 'Kuah rawon'
         ]);
 
         DB::table('warehouses')->insert([
-            'name' => 'dengkul'
+            'warehouse_name' => 'Dengkul'
         ]);
 
         DB::table('warehouses')->insert([
-            'name' => 'daging'
+            'warehouse_name' => 'Daging'
         ]);
     }
 }

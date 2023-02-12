@@ -14,15 +14,15 @@ class MarketSeeder extends Seeder {
      */
     public function run() {
         DB::table('markets')->insert([
-            'name' => 'timun'
+            'market_name' => 'Timun'
         ]);
 
         DB::table('markets')->insert([
-            'name' => 'tomat'
+            'market_name' => 'Tomat'
         ]);
 
         DB::table('markets')->insert([
-            'name' => 'wortel'
+            'market_name' => 'Wortel'
         ]);
     }
 }

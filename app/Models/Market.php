@@ -11,7 +11,7 @@ class Market extends Model {
     protected $table = 'markets';
     public $timestamps = false;
     protected $fillable = [
-        'name'
+        'market_name'
     ];
 
     public function marketdetails() {

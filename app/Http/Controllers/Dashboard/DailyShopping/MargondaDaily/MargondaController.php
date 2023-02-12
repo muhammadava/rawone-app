@@ -56,30 +56,30 @@ class MargondaController extends Controller {
     public function store(Request $request) {
         $join_markets = new MarketDetail;
         $join_markets->user_id = Auth::user()->id;
-        $join_markets->markets_id = $request->input( 'name' );
+        $join_markets->markets_id = $request->input( 'market_name' );
         $join_markets->market_price = $request->input( 'market_price' );
         $join_markets->save();
 
         $join_outlets = new OutletDetail;
         $join_outlets->user_id = Auth::user()->id;
-        $join_outlets->outlets_id = $request->input( 'name' );
+        $join_outlets->outlets_id = $request->input( 'outlet_name' );
         $join_outlets->outlet_price = $request->input( 'outlet_price' );
         $join_outlets->save();
     
         $join_warehouses = new WarehouseDetail;
         $join_warehouses->user_id = Auth::user()->id;
-        $join_warehouses->warehouses_id = $request->input( 'name' );
+        $join_warehouses->warehouses_id = $request->input( 'warehouse_name' );
         $join_warehouses->warehouse_price = $request->input( 'warehouse_price' );
         $join_warehouses->save();
 
         $join_tables = new Reports;
         $join_tables->user_id = Auth::user()->id;
-        $join_tables->markets_id = $request->input( 'markets_id' );        
-        $join_tables->outlets_id = $request->input( '_id' );        
-        $join_tables->warehouses_id = $request->input( 'name' );
-        $join_tables->market_price = $request->input( 'market_price' );
-        $join_tables->outlet_price = $request->input( 'outlet_price' );
-        $join_tables->warehouse_price = $request->input( 'warehouse_price' );
+        $join_tables->markets_id = $request->input( 'market_name' );
+        $join_tables->outlets_id = $request->input( 'market_price' );
+        $join_tables->warehouses_id = $request->input( 'outlet_name' );
+        $join_tables->market_details_id = $request->input( 'outlet_price' );
+        $join_tables->outlet_details_id = $request->input( 'warehouse_name' );
+        $join_tables->warehouse_details_id = $request->input( 'warehouse_price' );
         $join_tables->save();
 
         return redirect()->back();
