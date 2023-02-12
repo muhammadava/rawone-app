@@ -14,14 +14,14 @@
             <th bgcolor="tomato">Nama</th>
             <th bgcolor="salmon">Harga</th>
         </tr>
-            @foreach( $join_tables as $all )
+            @foreach( $all_tables_integers as $all =>$dataItem )
                 <tr>
-                    <td>{{ $all->market_name }}</td>
-                    <td>{{ $all->market_price }}</td>
-                    <td>{{ $all->outlet_name }}</td>
-                    <td>{{ $all->outlet_price }}</td>
-                    <td>{{ $all->warehouse_name }}</td>
-                    <td>{{ $all->warehouse_price }}</td>
+                    <td>{{ $dataItem->market_name }}</td>
+                    <td>{{ $dataItem->market_price }}</td>
+                    <td>{{ $dataItem->outlet_name }}</td>
+                    <td>{{ $dataItem->outlet_price }}</td>
+                    <td>{{ $dataItem->warehouse_name }}</td>
+                    <td>{{ $dataItem->warehouse_price }}</td>
                 </tr>
             @endforeach
     </table>

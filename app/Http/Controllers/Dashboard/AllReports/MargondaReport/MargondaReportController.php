@@ -24,14 +24,31 @@ class MargondaReportController extends Controller {
 
     public function cetakPDF() {
         // Cara ke 1 untuk menampilkan semua join data 
-        $join_tables = DB::table('reports')
-                ->join('markets', 'markets.id', '=', 'reports.markets_id')
-                ->join('outlets', 'outlets.id', '=', 'reports.outlets_id')
-                ->join('warehouses', 'warehouses.id', '=', 'reports.warehouses_id')
-                ->join('market_details', 'market_details.markets_id', '=', 'reports.id')
-                ->join('outlet_details', 'outlet_details.outlets_id', '=', 'reports.id')
-                ->join('warehouse_details', 'warehouse_details.warehouses_id', '=', 'reports.id')
-                ->get();
+        $join_tables = [ 
+            DB::table('reports')
+            ->join('markets', 'markets.id', '=', 'reports.markets_id')
+            ->join('outlets', 'outlets.id', '=', 'reports.outlets_id')
+            ->join('warehouses', 'warehouses.id', '=', 'reports.warehouses_id')
+            ->join('market_details', 'market_details.markets_id', '=', 'reports.id')
+            ->join('outlet_details', 'outlet_details.outlets_id', '=', 'reports.id')
+            ->join('warehouse_details', 'warehouse_details.warehouses_id', '=', 'reports.id')
+            ->get(),
+        ];
+
+        // Untuk mengatasi terjadinya looping 2 kali
+        $all_tables_integers = [];
+        foreach ($join_tables as $key => $value) {
+            if ($value == 2) {
+                unset($all_tables_integers[$key]);
+                $all_tables_integers[] = $item;
+            }
+        }
+
+        // Membuat array variabel all_tables yang bertipe integer(angka) menjadi string(text)
+        $object = new \stdClass();
+        $object->value = "1234567890";
+
+        $all_tables_integer = (int) $object->value;
 
         // Cara ke 2
         // $join_tables = DB::table('markets')
@@ -69,7 +86,7 @@ class MargondaReportController extends Controller {
         // $tables = OutletDetail::all();
         // $tables = WarehouseDetail::all();
 
-        $pdf = PDF::loadview( 'dashboard.allReports.margondaReport.viewMargonda', compact( 'join_tables' ) )->setpaper( 'A4', 'potrait' );
+        $pdf = PDF::loadview( 'dashboard.allReports.margondaReport.viewMargonda', compact('all_tables_integers', 'all_tables_integer') )->setpaper( 'A4', 'potrait' );
         return $pdf->stream( 'laporan-harian-margonda.pdf' );
     }
 }
