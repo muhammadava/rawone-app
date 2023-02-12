@@ -1,6 +1,6 @@
 <div class="container">
 
-    <table border="3" cellspacing="0" cellpadding="10" align="center">
+    <table border="3" cellspacing="0" cellpadding="5" width="100" align="center">
         <tr>
             <th colspan="2" bgcolor="lightgreen">PASAR</th>
             <th colspan="2" bgcolor="lightblue">OUTLET</th>

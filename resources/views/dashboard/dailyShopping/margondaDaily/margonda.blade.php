@@ -141,11 +141,9 @@
                       </tr>
                     </tbody>
                     @endforeach
-                    <tfooter>
                       <tr>
-                        <td>Total: {{ number_format($total, 3) }}</td>
+                        <td>Total: Rp. {{ number_format($total) }}</td>
                       </tr>
-                    </tfooter>
                   </table>
                 </div><!-- table-responsive -->
               </div>
