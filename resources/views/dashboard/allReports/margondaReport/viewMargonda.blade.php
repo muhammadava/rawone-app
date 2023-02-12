@@ -14,14 +14,14 @@
             <th bgcolor="tomato">Nama</th>
             <th bgcolor="salmon">Harga</th>
         </tr>
-            @foreach( $all_tables_integers as $all =>$dataItem )
+            @foreach( $all_tables_integers as $all_tables_integer )
                 <tr>
-                    <td>{{ $dataItem->market_name }}</td>
-                    <td>{{ $dataItem->market_price }}</td>
-                    <td>{{ $dataItem->outlet_name }}</td>
-                    <td>{{ $dataItem->outlet_price }}</td>
-                    <td>{{ $dataItem->warehouse_name }}</td>
-                    <td>{{ $dataItem->warehouse_price }}</td>
+                    <td>{{ $all_tables_integer['market_name'] }}</td>
+                    <td>{{ intval($all_tables_integer['market_price']) }}</td>
+                    <td>{{ $all_tables_integer['outlet_name'] }}</td>
+                    <td>{{ intval($all_tables_integer['outlet_price']) }}</td>
+                    <td>{{ $all_tables_integer['warehouse_name'] }}</td>
+                    <td>{{ intval($all_tables_integer['warehouse_price']) }}</td>
                 </tr>
             @endforeach
     </table>
