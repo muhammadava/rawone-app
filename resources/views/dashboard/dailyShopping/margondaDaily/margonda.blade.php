@@ -141,6 +141,11 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tfooter>
+                      <tr>
+                        <td>Total: {{ number_format($total, 3) }}</td>
+                      </tr>
+                    </tfooter>
                   </table>
                 </div><!-- table-responsive -->
               </div>
@@ -186,7 +191,6 @@
                   </table>
                 </div><!-- table-responsive -->
               </div>
-
             </div>
 
           </div><!-- end card body -->
