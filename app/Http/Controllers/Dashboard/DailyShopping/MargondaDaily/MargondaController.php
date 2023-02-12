@@ -75,11 +75,11 @@ class MargondaController extends Controller {
         $join_tables = new Reports;
         $join_tables->user_id = Auth::user()->id;
         $join_tables->markets_id = $request->input( 'market_name' );
-        $join_tables->outlets_id = $request->input( 'market_price' );
-        $join_tables->warehouses_id = $request->input( 'outlet_name' );
-        $join_tables->market_details_id = $request->input( 'outlet_price' );
-        $join_tables->outlet_details_id = $request->input( 'warehouse_name' );
-        $join_tables->warehouse_details_id = $request->input( 'warehouse_price' );
+        $join_tables->market_price = $request->input( 'market_price' );
+        $join_tables->outlets_id = $request->input( 'outlet_name' );
+        $join_tables->outlet_price = $request->input( 'outlet_price' );
+        $join_tables->warehouses_id = $request->input( 'warehouse_name' );
+        $join_tables->warehouse_price = $request->input( 'warehouse_price' );
         $join_tables->save();
 
         return redirect()->back();
