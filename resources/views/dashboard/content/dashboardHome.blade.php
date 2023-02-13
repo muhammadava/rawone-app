@@ -4,20 +4,14 @@
       <div class="az-content-body">
         <div class="az-dashboard-one-title">
           <div>
-            <h2 class="az-dashboard-title">Halo, selamat datang!</h2>
+            <h2 class="az-dashboard-title">Halo {{ Auth::user()->name }}, selamat datang!</h2>
             <p class="az-dashboard-text">Selamat bekerja, semoga hari mu menyenangkan.</p>
           </div>
           <div class="az-content-header-right">
             <div class="media">
               <div class="media-body">
-                <label>Start Date</label>
+                <label>Tanggal</label>
                 <h6>Oct 10, 2018</h6>
-              </div><!-- media-body -->
-            </div><!-- media -->
-            <div class="media">
-              <div class="media-body">
-                <label>End Date</label>
-                <h6>Oct 23, 2018</h6>
               </div><!-- media-body -->
             </div><!-- media -->
             <div class="media">

@@ -25,11 +25,11 @@
                 </tr>
             @endforeach
             <tr>
-                <td>Total:</td> 
+                <td>TOTAL</td> 
                 <td align="right">Rp. {{ number_format($totalMarket) }}</td>  
-                <td>Total:</td>    
+                <td>TOTAL</td>    
                 <td align="right">Rp. {{ number_format($totalOutlet) }}</td>  
-                <td>Total:</td>    
+                <td>TOTAL</td>    
                 <td align="right">Rp. {{ number_format($totalWarehouse) }}</td>  
             </tr>
     </table>
