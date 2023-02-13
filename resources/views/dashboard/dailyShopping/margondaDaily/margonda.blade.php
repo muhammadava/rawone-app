@@ -142,7 +142,7 @@
                     </tbody>
                     @endforeach
                       <tr>
-                        <td>Total: Rp. {{ number_format($total) }}</td>
+                        <td>Total: Rp. {{ number_format($totalMarket) }}</td>
                       </tr>
                   </table>
                 </div><!-- table-responsive -->
@@ -165,6 +165,9 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tr>
+                      <td>Total: Rp. {{ number_format($totalOutlet) }}</td>
+                    </tr>
                   </table>
                 </div><!-- table-responsive -->
               </div>
@@ -186,6 +189,9 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tr>
+                      <td>Total: Rp. {{ number_format($totalWarehouse) }}</td>
+                    </tr>
                   </table>
                 </div><!-- table-responsive -->
               </div>

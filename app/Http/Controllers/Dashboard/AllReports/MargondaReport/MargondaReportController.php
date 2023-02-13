@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
+use App\Models\MarketDetail;
+use App\Models\OutletDetail;
+use App\Models\WarehouseDetail;
+
 class MargondaReportController extends Controller {
     public function index() {
         $join_markets = DB::table('market_details')
@@ -19,7 +23,12 @@ class MargondaReportController extends Controller {
         $join_warehouses = DB::table('warehouse_details')
                 ->join('warehouses', 'warehouses.id', '=', 'warehouse_details.warehouses_id')
                 ->get();
-        return view( 'dashboard.allReports.margondaReport.margondaReport', compact( 'join_markets', 'join_outlets', 'join_warehouses' ) );
+
+        $totalMarket = MarketDetail::sum('market_price');
+        $totalOutlet = OutletDetail::sum('outlet_price');
+        $totalWarehouse = WarehouseDetail::sum('warehouse_price');
+
+        return view( 'dashboard.allReports.margondaReport.margondaReport', compact( 'join_markets', 'join_outlets', 'join_warehouses', 'totalMarket', 'totalOutlet', 'totalWarehouse' ) );
     }
 
     public function cetakPDF() {
@@ -90,35 +99,32 @@ class MargondaReportController extends Controller {
         // $pdf = PDF::loadview( 'dashboard.allReports.margondaReport.viewMargonda', compact('all_tables_integers', 'all_tables_integer') )->setpaper( 'A4', 'potrait' );
         // return $pdf->stream( 'laporan-harian-margonda.pdf' );
 
-        $join_tables = [ 
-            [ 
-                DB::table('reports')
+        $join_tables = DB::table('reports')
                 ->join('markets', 'markets.id', '=', 'reports.markets_id')
                 ->join('outlets', 'outlets.id', '=', 'reports.outlets_id')
                 ->join('warehouses', 'warehouses.id', '=', 'reports.warehouses_id')
-                ->join('market_details', 'market_details.markets_id', '=', 'reports.id')
-                ->join('outlet_details', 'outlet_details.outlets_id', '=', 'reports.id')
-                ->join('warehouse_details', 'warehouse_details.warehouses_id', '=', 'reports.id')
-                ->get()
-            ],
-        ];
+                ->get();
+
+        $totalMarket = MarketDetail::sum('market_price');
+        $totalOutlet = OutletDetail::sum('outlet_price');
+        $totalWarehouse = WarehouseDetail::sum('warehouse_price');
 
         // Untuk mengatasi terjadinya looping 2 kali
-        $all_tables_integers = [];
-            foreach ($all_tables_integers as $key => $value) {
-            if ($value != 2) {
-                unset($all_tables_integers[$key]);
-                $all_tables_integers[] = $value;
-            }
-        }
+        // $all_tables_integers = [];
+        //     foreach ($all_tables_integers as $key => $value) {
+        //     if ($value != 2) {
+        //         unset($all_tables_integers[$key]);
+        //         $all_tables_integers[] = $value;
+        //     }
+        // }
 
         // Membuat array variabel all_tables yang bertipe integer(angka) menjadi string(text)
-        $object = new \stdClass();
-        $object->value = "1234567890";
+        // $object = new \stdClass();
+        // $object->value = "1234567890";
 
-        $all_tables_integer = intval($object->value);
+        // $all_tables_integer = intval($object->value);
 
-        $pdf = PDF::loadview( 'dashboard.allReports.margondaReport.viewMargonda', ['all_tables_integers' => $all_tables_integers] )->setpaper( 'A4', 'potrait' );
+        $pdf = PDF::loadview( 'dashboard.allReports.margondaReport.viewMargonda', compact('join_tables', 'totalMarket', 'totalOutlet', 'totalWarehouse') )->setpaper( 'A4', 'potrait' );
         return $pdf->stream( 'laporan-harian-margonda.pdf' );
     }
 }

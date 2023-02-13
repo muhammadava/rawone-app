@@ -37,6 +37,11 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tr>
+                      <tr>
+                        <td>Total: Rp. {{ number_format($totalMarket) }}</td>
+                      </tr>
+                    </tr>
                   </table>
                 </div><!-- table-responsive -->
               </div>
@@ -58,6 +63,9 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tr>
+                      <td>Total: Rp. {{ number_format($totalOutlet) }}</td>
+                    </tr>
                   </table>
                 </div><!-- table-responsive -->
               </div>
@@ -79,6 +87,11 @@
                       </tr>
                     </tbody>
                     @endforeach
+                    <tr>
+                      <tr>
+                        <td>Total: Rp. {{ number_format($totalWarehouse) }}</td>
+                      </tr>
+                    </tr>
                   </table>
                 </div><!-- table-responsive -->
               </div>

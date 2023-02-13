@@ -35,9 +35,11 @@ class MargondaController extends Controller {
                 ->join('warehouses', 'warehouses.id', '=', 'warehouse_details.warehouses_id')
                 ->get();
             
-        $total = MarketDetail::sum('market_price');
+        $totalMarket = MarketDetail::sum('market_price');
+        $totalOutlet = OutletDetail::sum('outlet_price');
+        $totalWarehouse = WarehouseDetail::sum('warehouse_price');
 
-        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses', 'join_markets', 'join_outlets', 'join_warehouses', 'total' ) );
+        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses', 'join_markets', 'join_outlets', 'join_warehouses', 'totalMarket', 'totalOutlet', 'totalWarehouse' ) );
     }
 
     /**
