@@ -7,6 +7,8 @@ use App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily\MargondaControlle
 use App\Http\Controllers\Dashboard\DailyShopping\SimatupangDaily\SimatupangController;
 use App\Http\Controllers\Dashboard\DailyShopping\WarehouseDaily\WarehouseController;
 
+use App\Http\Controllers\Dashboard\Warehouse\WarehousesController;
+
 use App\Http\Controllers\Dashboard\AllReports\ReportsController;
 use App\Http\Controllers\Dashboard\AllReports\MargondaReport\MargondaReportController;
 
@@ -35,13 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('/dashboard')->group(function () {
-        Route::resource( '/margonda', MargondaController::class );
+        Route::resource( '/harian-margonda', MargondaController::class );
         Route::post( '/margonda', [MargondaController::class, 'store'] )->name( 'margondaStore' );
-        Route::resource( '/simatupang', SimatupangController::class );
-        Route::resource( '/gudang', WarehouseController::class );
+        Route::resource( '/harian-simatupang', SimatupangController::class );
+        Route::resource( '/harian-gudang', WarehouseController::class );
 
         /* Route laporan gudang */
-
+        Route::resource( '/laporan-gudang', [WarehousesController::class] );
         
         /* Route seluruh laporan */
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );

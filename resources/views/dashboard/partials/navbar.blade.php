@@ -22,7 +22,7 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link"><i class="far fa-clipboard pr-2"></i>Laporan Gudang</a>
+          <a href="/dashboard/laporan-gudang" class="nav-link"><i class="far fa-clipboard pr-2"></i>Laporan Gudang</a>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link with-sub"><i class="icon ion-md-paper pr-2"></i>Laporan Outlet</a>
