@@ -16,9 +16,9 @@
         <li class="nav-item">
           <a href="" class="nav-link with-sub"><i class="far fa-file-alt pr-2"></i>Laporan Harian</a>
           <nav class="az-menu-sub">
-            <a href="/dashboard/margonda" class="nav-link">Margonda</a>
-            <a href="/dashboard/simatupang" class="nav-link">Simatupang</a>
-            <a href="/dashboard/gudang" class="nav-link">Gudang</a>
+            <a href="/dashboard/harian-margonda" class="nav-link">Margonda</a>
+            <a href="/dashboard/harian-simatupang" class="nav-link">Simatupang</a>
+            <a href="/dashboard/harian-gudang" class="nav-link">Gudang</a>
           </nav>
         </li>
         <li class="nav-item">

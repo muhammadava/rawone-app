@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Dashboard\DailyShopping\MargondaDaily;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\DB;
 use Auth;
 use PDF;
+
 use Illuminate\Http\Request;
 use App\Models\Market;
 use App\Models\MarketDetail;
@@ -25,6 +27,7 @@ class MargondaController extends Controller {
         $markets = Market::all();
         $outlets = Outlet::all();
         $warehouses = Warehouse::all();
+
         $join_markets = DB::table('market_details')
                 ->join('markets', 'markets.id', '=', 'market_details.markets_id')
                 ->get();

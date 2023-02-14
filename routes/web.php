@@ -38,12 +38,12 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/dashboard')->group(function () {
         Route::resource( '/harian-margonda', MargondaController::class );
-        Route::post( '/margonda', [MargondaController::class, 'store'] )->name( 'margondaStore' );
+        Route::post( '/margonda', [MargondaController::class, 'store'] )->name( 'margonda.store' );
         Route::resource( '/harian-simatupang', SimatupangController::class );
         Route::resource( '/harian-gudang', WarehouseController::class );
 
         /* Route laporan gudang */
-        Route::resource( '/laporan-gudang', [WarehousesController::class] );
+        Route::resource( '/laporan-gudang', WarehousesController::class );
         
         /* Route seluruh laporan */
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );

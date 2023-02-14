@@ -62,8 +62,8 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="{{ route( 'margondaStore' ) }}" method="post">
-                    @csrf
+                  <form action="{{ route( 'margonda.store' ) }}" method="POST">
+                    {{ csrf_field() }}
                     <div class="modal-body"><!-- start modal body -->
 
                       <div class="row"><!-- start row -->
