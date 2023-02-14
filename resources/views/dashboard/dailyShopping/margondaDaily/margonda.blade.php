@@ -93,6 +93,17 @@
                             </select>
                           </div>
                             <input class="form-control mg-b-20" name="outlet_price" placeholder="Masukan harga" type="text">
+                          <!-- Tambahan outlet -->
+                          <div class="mg-b-20">
+                            <p class="mg-b-10 text-center">Tambahan Outlet</p>
+                            <select class="form-control select2-no-search" name="outlet_name">
+                              <option label="Pilih satu"></option>
+                              @foreach( $outlets as $outlet )
+                                <option value="{{ $outlet->id }}">{{ $outlet->outlet_name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
                         <div class="col-sm-4"><!-- start col -->
 
@@ -106,6 +117,39 @@
                             </select>
                           </div>
                             <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
+                          <!-- Gs Warehouse -->
+                          <div class="mg-b-20">
+                            <p class="mg-b-10 text-center">Gs Gudang</p>
+                            <select class="form-control select2-no-search" name="outlet_name">
+                              <option label="Pilih satu"></option>
+                              @foreach( $outlets as $outlet )
+                                <option value="{{ $outlet->id }}">{{ $outlet->outlet_name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
+                          <!-- Utility Warehouse -->
+                          <div class="mg-b-20">
+                            <p class="mg-b-10 text-center">Utility Gudang</p>
+                            <select class="form-control select2-no-search" name="outlet_name">
+                              <option label="Pilih satu"></option>
+                              @foreach( $outlets as $outlet )
+                                <option value="{{ $outlet->id }}">{{ $outlet->outlet_name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
+                          <!-- Gs Warehouse -->
+                          <div class="mg-b-20">
+                            <p class="mg-b-10 text-center">Adm Gudang</p>
+                            <select class="form-control select2-no-search" name="outlet_name">
+                              <option label="Pilih satu"></option>
+                              @foreach( $outlets as $outlet )
+                                <option value="{{ $outlet->id }}">{{ $outlet->outlet_name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <input class="form-control mg-b-20" name="warehouse_price" placeholder="Masukan harga" type="text">
                         </div><!-- end col -->
 
                       </div><!-- end row -->
