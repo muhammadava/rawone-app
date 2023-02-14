@@ -29,16 +29,6 @@ class WarehousesController extends Controller {
         
     }
 
-    public function calculateTotalGrossSales() {
-        $total = DB::table('warehouse_sales')->sum('simatupang', 'margonda', 'kelapa_gading', 'etc');
-        return $total;
-    }   
-
-    public function calculateTotalPercent() {
-        $total = DB::table('warehouse_sales')->sum('simatupang', 'margonda', 'kelapa_gading', 'etc', 'percent');
-        return $total;
-    }   
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +40,13 @@ class WarehousesController extends Controller {
             'date' => 'required|date_format:Y-m-d',
         ]);
 
+        $totalSale = DB::table('warehouse_sales')
+            ->select(DB::raw('SUM(simatupang + margonda + kelapa_gading + etc) as totalSale'))
+            ->get();
+        $totalPercent = DB::table('warehouse_sales')
+            ->select(DB::raw('SUM(simatupang + margonda + kelapa_gading + etc + gross_sales) as totalPercent'))
+            ->get();
+
         $extramargonda = new WarehouseSale;
         $extramargonda->date = $request->input( 'date' );
         $extramargonda->simatupang = $request->input( 'simatupang' );
@@ -57,8 +54,8 @@ class WarehousesController extends Controller {
         $extramargonda->kelapa_gading = $request->input( 'kelapa_gading' );
         $extramargonda->etc = $request->input( 'etc' );
         $extramargonda->information = $request->input( 'information' );
-        $extramargonda->gross_sales = $this->calculateTotalGrossSales();
-        $extramargonda->percent = $this->calculateTotalPercent();
+        $extramargonda->gross_sales = $totalSale[0]->totalSale;
+        $extramargonda->percent = $totalPercent[0]->totalPercent;
         $extramargonda->save();
 
         return redirect()->back();
