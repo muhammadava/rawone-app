@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder {
             MarketSeeder::class,
             OutletSeeder::class,
             WarehouseSeeder::class,
+            GsSeeder::class,
+            UtilitySeeder::class,
+            AdmSeeder::class,
+            EtcSeeder::class,
         ]);
     }
 }
