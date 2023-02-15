@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
         /* Route laporan gudang */
         Route::resource( '/laporan-gudang', WarehousesController::class );
-        Route::post( '/gudang', [WarehousesController::class, 'store'] )->name( 'warehouses.store' );
+        Route::post( '/gudang/{id}', [WarehousesController::class, 'store'] )->name( 'warehouses.store' );
         
         /* Route seluruh laporan */
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );

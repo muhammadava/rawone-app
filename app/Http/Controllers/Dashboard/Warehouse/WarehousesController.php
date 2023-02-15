@@ -29,21 +29,24 @@ class WarehousesController extends Controller {
         
     }
 
+    public function calculateTotalPercent() {
+        $totalPercent = DB::table('warehouse_sales')->sum( 'gross_sales' );
+        return $totalPercent;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request, $id) {
         $request->validate([
             'date' => 'required|date_format:Y-m-d',
             'gross_sales' => 'nullable|numeric',
         ]);
 
-        $totalSale = DB::table('warehouse_sales')
-            ->select(DB::raw('SUM(simatupang + margonda + kelapa_gading + etc) as totalSale'))
-            ->get();
+        $request = $request->all();
 
         $warehousesale = new WarehouseSale;
         $warehousesale->date = $request->input( 'date' );
@@ -52,16 +55,11 @@ class WarehousesController extends Controller {
         $warehousesale->kelapa_gading = $request->input( 'kelapa_gading' );
         $warehousesale->etc = $request->input( 'etc' );
         $warehousesale->information = $request->input( 'information' );
-        $warehousesale->gross_sales = $totalSale[0]->totalSale;
+        $warehousesale->gross_sales = $request->input( 'simatupang' ) + $request->input( 'margonda' ) + $request->input( 'kelapa_gading' ) + $request->input( 'etc' );
         $warehousesale->percent = $this->calculateTotalPercent();
         $warehousesale->save();
 
         return redirect()->back();
-    }
-
-    public function calculateTotalPercent() {
-        $totalPercent = DB::table('warehouse_sales')->sum( 'gross_sales' );
-        return $totalPercent;
     }
 
     /**
