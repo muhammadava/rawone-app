@@ -38,27 +38,30 @@ class WarehousesController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'date' => 'required|date_format:Y-m-d',
+            'gross_sales' => 'nullable|numeric',
         ]);
 
         $totalSale = DB::table('warehouse_sales')
             ->select(DB::raw('SUM(simatupang + margonda + kelapa_gading + etc) as totalSale'))
             ->get();
-        $totalPercent = DB::table('warehouse_sales')
-            ->select(DB::raw('SUM(simatupang + margonda + kelapa_gading + etc + gross_sales) as totalPercent'))
-            ->get();
 
-        $extramargonda = new WarehouseSale;
-        $extramargonda->date = $request->input( 'date' );
-        $extramargonda->simatupang = $request->input( 'simatupang' );
-        $extramargonda->margonda = $request->input( 'margonda' );
-        $extramargonda->kelapa_gading = $request->input( 'kelapa_gading' );
-        $extramargonda->etc = $request->input( 'etc' );
-        $extramargonda->information = $request->input( 'information' );
-        $extramargonda->gross_sales = $totalSale[0]->totalSale;
-        $extramargonda->percent = $totalPercent[0]->totalPercent;
-        $extramargonda->save();
+        $warehousesale = new WarehouseSale;
+        $warehousesale->date = $request->input( 'date' );
+        $warehousesale->simatupang = $request->input( 'simatupang' );
+        $warehousesale->margonda = $request->input( 'margonda' );
+        $warehousesale->kelapa_gading = $request->input( 'kelapa_gading' );
+        $warehousesale->etc = $request->input( 'etc' );
+        $warehousesale->information = $request->input( 'information' );
+        $warehousesale->gross_sales = $totalSale[0]->totalSale;
+        $warehousesale->percent = $this->calculateTotalPercent();
+        $warehousesale->save();
 
         return redirect()->back();
+    }
+
+    public function calculateTotalPercent() {
+        $totalPercent = DB::table('warehouse_sales')->sum( 'gross_sales' );
+        return $totalPercent;
     }
 
     /**

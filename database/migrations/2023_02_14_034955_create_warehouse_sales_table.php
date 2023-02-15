@@ -14,13 +14,13 @@ return new class extends Migration {
         Schema::create('warehouse_sales', function (Blueprint $table) {
             $table->id();
             $table->date( 'date' );
-            $table->integer( 'simatupang' );
-            $table->integer( 'margonda' );
-            $table->integer( 'kelapa_gading' );
-            $table->integer( 'etc' );
+            $table->decimal( 'simatupang' );
+            $table->decimal( 'margonda' );
+            $table->decimal( 'kelapa_gading' );
+            $table->decimal( 'etc' );
             $table->longText( 'information' );
-            $table->integer( 'gross_sales' );
-            $table->integer( 'percent' );
+            $table->decimal( 'gross_sales' )->default(0);
+            $table->decimal( 'percent' );
             $table->timestamps();
         });
     }

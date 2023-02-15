@@ -19,17 +19,17 @@ return new class extends Migration {
             $table->foreignId( 'markets_id' )
                 ->constrained( 'markets' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'market_price' );
+            $table->decimal( 'market_price', 6, 2 );
 
             $table->foreignId( 'outlets_id' )
                 ->constrained( 'outlets' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'outlet_price' );
+            $table->decimal( 'outlet_price', 6, 2 );
 
             $table->foreignId( 'warehouses_id' )
                 ->constrained( 'warehouses' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'warehouse_price' );
+            $table->decimal( 'warehouse_price', 6, 2 );
             $table->timestamps();
         });
     }

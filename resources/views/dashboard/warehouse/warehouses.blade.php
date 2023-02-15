@@ -55,8 +55,8 @@
                                     <input class="form-control mg-b-20" id="keterangan" name="information" placeholder="Beri keterangan, jika ada" type="text">
                                 </div>
                             </div>
-                            <input class="form-control mg-b-20" id="keterangan" name="gross_sales" placeholder="" type="hidden">
-                            <input class="form-control mg-b-20" id="keterangan" name="percent" placeholder="" type="hidden">
+                            <input class="form-control mg-b-20" name="gross_sales" type="hidden">
+                            <input class="form-control mg-b-20" name="percent" type="hidden">
                         </div><!-- End modal body -->
                         <div class="modal-footer">
                             <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
