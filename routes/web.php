@@ -43,8 +43,19 @@ Route::middleware('auth')->group(function () {
         Route::resource( '/harian-gudang', WarehouseController::class );
 
         /* Route laporan gudang */
-        Route::resource( '/laporan-gudang', WarehousesController::class );
-        Route::post( '/gudang/{id}', [WarehousesController::class, 'store'] )->name( 'warehouses.store' );
+        Route::resource( '/laporan-belanja-gudang', WarehousesController::class );
+        Route::get( '/laporan-belanja-gudang/buat-laporan-belanja-gudang/{id}', function( $id ) {
+            $validator = Validator::make(['id' => $id], [
+                'id' => 'required|exists:warehouse_sales,id'
+            ]);
+    
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator);
+            }
+    
+            return view('dashboard.warehouses.sales.create', ['id' => $id]);
+        });
+        Route::post( 'create', [WarehousesController::class, 'store'] )->name( 'warehouse.store' );
         
         /* Route seluruh laporan */
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );

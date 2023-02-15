@@ -17,7 +17,7 @@ class WarehousesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view( 'dashboard.warehouse.warehouses' );
+        return view( 'dashboard.warehouses.sales.warehouseSales' );
     }
 
     /**
@@ -40,15 +40,17 @@ class WarehousesController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id) {
-        $request->validate([
+    public function store(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:warehouse_sales,id',
             'date' => 'required|date_format:Y-m-d',
-            'gross_sales' => 'nullable|numeric',
         ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
 
-        $request = $request->all();
-
-        $warehousesale = new WarehouseSale;
+        $warehousesale = new WarehouseSale();
         $warehousesale->date = $request->input( 'date' );
         $warehousesale->simatupang = $request->input( 'simatupang' );
         $warehousesale->margonda = $request->input( 'margonda' );
@@ -59,7 +61,7 @@ class WarehousesController extends Controller {
         $warehousesale->percent = $this->calculateTotalPercent();
         $warehousesale->save();
 
-        return redirect()->back();
+        return redirect()->to_route( 'dashboard.warehouses.sales.warehouseSales' );
     }
 
     /**
