@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->foreignId( 'warehouses_id' )
                 ->constrained( 'warehouses' )
                 ->onDelete( 'cascade' );
-            $table->decimal( 'warehouse_price', 6, 2 );
+            $table->integer( 'warehouse_price' );
             $table->timestamps();
         });
     }
