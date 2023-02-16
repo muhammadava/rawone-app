@@ -23,22 +23,22 @@ return new class extends Migration {
             $table->foreignId( 'gs_id' )
                 ->constrained( 'gs_margonda' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'rp_gs' );
+            $table->integer( 'gs_price' );
 
             $table->foreignId( 'utility_id' )
                 ->constrained( 'utility_margonda' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'rp_utility' );
+            $table->integer( 'utility_price' );
 
             $table->foreignId( 'adm_id' )
                 ->constrained( 'adm_margonda' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'rp_adm' );
+            $table->integer( 'adm_price' );
             
             $table->foreignId( 'etc_id' )
                 ->constrained( 'etc_margonda' )
                 ->onDelete( 'cascade' );
-            $table->integer( 'rp_etc' );
+            $table->integer( 'etc_price' );
 
             $table->integer( 'total' );
             $table->integer( 'mtd' );

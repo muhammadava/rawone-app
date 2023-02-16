@@ -16,7 +16,13 @@ use App\Models\OutletDetail;
 use App\Models\Warehouse;
 use App\Models\WarehouseDetail;
 use App\Models\Reports;
-use App\Models\ExtraModel;
+
+use App\Models\GsMargonda;
+use App\Models\UtilityMargonda;
+use App\Models\AdmMargonda;
+use App\Models\EtcMargonda;
+
+use App\Models\ExtraMargonda;
 
 class MargondaController extends Controller {
     /**
@@ -28,6 +34,10 @@ class MargondaController extends Controller {
         $markets = Market::all();
         $outlets = Outlet::all();
         $warehouses = Warehouse::all();
+        $gss = GsMargonda::all();
+        $utilitys = UtilityMargonda::all();
+        $adms = AdmMargonda::all();
+        $etcs = EtcMargonda::all();
 
         $join_markets = DB::table('market_details')
                 ->join('markets', 'markets.id', '=', 'market_details.markets_id')
@@ -43,7 +53,7 @@ class MargondaController extends Controller {
         $totalOutlet = OutletDetail::sum('outlet_price');
         $totalWarehouse = WarehouseDetail::sum('warehouse_price');
 
-        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses', 'join_markets', 'join_outlets', 'join_warehouses', 'totalMarket', 'totalOutlet', 'totalWarehouse' ) );
+        return view( 'dashboard.dailyShopping.margondaDaily.margonda', compact( 'markets', 'outlets', 'warehouses', 'gss', 'utilitys', 'adms', 'etcs', 'join_markets', 'join_outlets', 'join_warehouses', 'totalMarket', 'totalOutlet', 'totalWarehouse' ) );
     }
 
     /**
@@ -90,15 +100,19 @@ class MargondaController extends Controller {
         $join_tables->warehouse_price = $request->input( 'warehouse_price' );
         $join_tables->save();
 
-        $join_tables = new ExtraModel;
-        $join_tables->user_id = Auth::user()->id;
-        $join_tables->markets_id = $request->input( 'market_name' );
-        $join_tables->market_price = $request->input( 'market_price' );
-        $join_tables->outlets_id = $request->input( 'outlet_name' );
-        $join_tables->outlet_price = $request->input( 'outlet_price' );
-        $join_tables->warehouses_id = $request->input( 'warehouse_name' );
-        $join_tables->warehouse_price = $request->input( 'warehouse_price' );
-        $join_tables->save();
+        $extradata = new ExtraMargonda;
+        $extradata->date = $request->input( 'date' );
+        $extradata->gas = $request->input( 'gas' );
+        $extradata->parking = $request->input( 'parking' );
+        $extradata->gs_id = $request->input( 'gs_id' );
+        $extradata->gs_price = $request->input( 'gs_price' );
+        $extradata->utility_id = $request->input( 'utility_name' );
+        $extradata->utility_price = $request->input( 'utility_price' );
+        $extradata->adm_id = $request->input( 'adm_name' );
+        $extradata->adm_price = $request->input( 'adm_price' );
+        $extradata->etc_id = $request->input( 'etc_name' );
+        $extradata->etc_price = $request->input( 'etc_price' );
+        $extradata->save();
 
         return redirect()->back();
     }
