@@ -9,7 +9,4 @@ class AdmMargonda extends Model {
     use HasFactory;
     protected $table = 'adm_margonda';
     public $timestamps = false;
-    protected $fillable = [
-        
-    ];
 }

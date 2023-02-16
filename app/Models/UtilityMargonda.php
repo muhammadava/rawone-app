@@ -9,7 +9,4 @@ class UtilityMargonda extends Model {
     use HasFactory;
     protected $table = 'utility_margonda';
     public $timestamps = false;
-    protected $fillable = [
-      
-    ];
 }

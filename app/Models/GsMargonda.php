@@ -9,7 +9,4 @@ class GsMargonda extends Model {
     use HasFactory;
     protected $table = 'gs_margonda';
     public $timestamps = false;
-    protected $fillable = [
-      
-    ];
 }

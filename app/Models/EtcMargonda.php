@@ -9,7 +9,4 @@ class EtcMargonda extends Model {
     use HasFactory;
     protected $table = 'etc_margonda';
     public $timestamps = false;
-    protected $fillable = [
-      
-    ];
 }

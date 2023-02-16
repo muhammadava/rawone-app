@@ -65,15 +65,12 @@ class MargondaController extends Controller {
         
     }
 
-    public function getProductPrice($id) {
-        $mtd = ExtraMargonda::find($id);
+    public function calculateTotalandMtd($newTotal) {
+        $totalPrice = $this->total + $newTotal;
+        $this->mtd = $totalPrice;
+        $this->save();
 
-        if ($mtd) {
-            $mtd = $mtd->mtd;
-            return $mtd;
-        } else {
-            return null;
-        }
+        return $totalPrice;
     }
 
     /**
@@ -82,7 +79,7 @@ class MargondaController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request, $id) {
         $join_markets = new MarketDetail;
         $join_markets->user_id = Auth::user()->id;
         $join_markets->markets_id = $request->input( 'market_name' );
@@ -111,7 +108,7 @@ class MargondaController extends Controller {
         $join_tables->warehouse_price = $request->input( 'warehouse_price' );
         $join_tables->save();
 
-        $extradata = new ExtraMargonda;
+        $extradata = ExtraMargonda::findOrFail($id);
         $extradata->user_id = Auth::user()->id;
         $extradata->date = $request->input( 'date' );
         $extradata->gas = $request->input( 'gas' );
@@ -124,8 +121,8 @@ class MargondaController extends Controller {
         $extradata->adm_price = $request->input( 'adm_price' );
         $extradata->etc_id = $request->input( 'etc_name' );
         $extradata->etc_price = $request->input( 'etc_price' );
-        $extradata->total = $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
-        $extradata->mtd = $this->getProductPrice($request->product_id);
+        $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
+        $extradata->mtd = $this->calculateTotal();
         $extradata->save();
 
         return redirect()->back();
