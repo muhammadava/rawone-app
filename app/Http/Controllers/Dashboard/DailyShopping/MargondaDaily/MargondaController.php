@@ -65,21 +65,13 @@ class MargondaController extends Controller {
         
     }
 
-    public function calculateTotalandMtd($newTotal) {
-        $totalPrice = $this->total + $newTotal;
-        $this->mtd = $totalPrice;
-        $this->save();
-
-        return $totalPrice;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id) {
+    public function store(Request $request) {
         $join_markets = new MarketDetail;
         $join_markets->user_id = Auth::user()->id;
         $join_markets->markets_id = $request->input( 'market_name' );
@@ -108,7 +100,7 @@ class MargondaController extends Controller {
         $join_tables->warehouse_price = $request->input( 'warehouse_price' );
         $join_tables->save();
 
-        $extradata = ExtraMargonda::findOrFail($id);
+        $extradata = new ExtraMargonda();
         $extradata->user_id = Auth::user()->id;
         $extradata->date = $request->input( 'date' );
         $extradata->gas = $request->input( 'gas' );
@@ -122,7 +114,7 @@ class MargondaController extends Controller {
         $extradata->etc_id = $request->input( 'etc_name' );
         $extradata->etc_price = $request->input( 'etc_price' );
         $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
-        $extradata->mtd = $this->calculateTotal();
+        $extradata->mtd = ExtraMargonda::calculateMTD($request->total);
         $extradata->save();
 
         return redirect()->back();
