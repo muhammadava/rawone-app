@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
             }
     
             return view('dashboard.warehouses.sales.create', ['id' => $id]);
-        });
+        })->name( 'warehouse.create' );
         Route::post( 'create', [WarehousesController::class, 'store'] )->name( 'warehouse.store' );
         
         /* Route seluruh laporan */

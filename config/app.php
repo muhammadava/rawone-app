@@ -214,4 +214,11 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
+    'view' => [
+        // ...
+        'paths' => [
+            resource_path('views'),
+        ],
+    ],
+
 ];
