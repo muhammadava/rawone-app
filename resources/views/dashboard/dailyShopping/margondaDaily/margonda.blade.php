@@ -65,7 +65,8 @@
                   <form action="{{ route( 'margonda.store' ) }}" method="POST">
                     {{ csrf_field() }}
                     <div class="modal-body"><!-- start modal body -->
-
+                      <input type="date" class="form-control" name="date" value="{{ date('Y-m-d', strtotime(now())) }}" readonly>
+                      <hr>
                       <div class="row"><!-- start row -->
                         
                         <div class="col-sm-4"><!-- start col -->
@@ -96,7 +97,7 @@
                           <!-- Tambahan outlet -->
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Tambahan Outlet</p>
-                            <select class="form-control select2-no-search" name="outlet_name">
+                            <select class="form-control select2-no-search" name="etc_name">
                               <option label="Pilih satu"></option>
                               @foreach( $etcs as $etc )
                                 <option value="{{ $etc->id }}">{{ $etc->etc_name }}</option>
@@ -120,7 +121,7 @@
                           <!-- Gs Warehouse -->
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Gs Gudang</p>
-                            <select class="form-control select2-no-search" name="outlet_name">
+                            <select class="form-control select2-no-search" name="gs_name">
                               <option label="Pilih satu"></option>
                               @foreach( $gss as $gs )
                                 <option value="{{ $gs->id }}">{{ $gs->gs_name }}</option>
@@ -131,7 +132,7 @@
                           <!-- Utility Warehouse -->
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Utility Gudang</p>
-                            <select class="form-control select2-no-search" name="outlet_name">
+                            <select class="form-control select2-no-search" name="utility_name">
                               <option label="Pilih satu"></option>
                               @foreach( $utilitys as $utility )
                                 <option value="{{ $utility->id }}">{{ $utility->utility_name }}</option>
@@ -142,7 +143,7 @@
                           <!-- Gs Warehouse -->
                           <div class="mg-b-20">
                             <p class="mg-b-10 text-center">Adm Gudang</p>
-                            <select class="form-control select2-no-search" name="outlet_name">
+                            <select class="form-control select2-no-search" name="adm_name">
                               <option label="Pilih satu"></option>
                               @foreach( $adms as $adm )
                                 <option value="{{ $adm->id }}">{{ $adm->adm_name }}</option>
@@ -158,6 +159,8 @@
                             <p class="mg-b-10 text-center">Parkir Gudang</p>
                             <input class="form-control mg-b-20" name="parking" placeholder="Masukan jika ada" type="text">
                           </div>
+                          <input class="form-control mg-b-20" name="total" type="hidden">
+                          <input class="form-control mg-b-20" name="mtd" type="hidden">
                         </div><!-- end col -->
 
                       </div><!-- end row -->

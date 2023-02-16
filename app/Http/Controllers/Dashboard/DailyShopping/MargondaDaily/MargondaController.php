@@ -65,6 +65,17 @@ class MargondaController extends Controller {
         
     }
 
+    public function getProductPrice($id) {
+        $mtd = ExtraMargonda::find($id);
+
+        if ($mtd) {
+            $mtd = $mtd->mtd;
+            return $mtd;
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -101,10 +112,11 @@ class MargondaController extends Controller {
         $join_tables->save();
 
         $extradata = new ExtraMargonda;
+        $extradata->user_id = Auth::user()->id;
         $extradata->date = $request->input( 'date' );
         $extradata->gas = $request->input( 'gas' );
         $extradata->parking = $request->input( 'parking' );
-        $extradata->gs_id = $request->input( 'gs_id' );
+        $extradata->gs_id = $request->input( 'gs_name' );
         $extradata->gs_price = $request->input( 'gs_price' );
         $extradata->utility_id = $request->input( 'utility_name' );
         $extradata->utility_price = $request->input( 'utility_price' );
@@ -112,6 +124,8 @@ class MargondaController extends Controller {
         $extradata->adm_price = $request->input( 'adm_price' );
         $extradata->etc_id = $request->input( 'etc_name' );
         $extradata->etc_price = $request->input( 'etc_price' );
+        $extradata->total = $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
+        $extradata->mtd = $this->getProductPrice($request->product_id);
         $extradata->save();
 
         return redirect()->back();
