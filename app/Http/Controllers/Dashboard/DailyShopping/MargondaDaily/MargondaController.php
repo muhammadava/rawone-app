@@ -65,6 +65,8 @@ class MargondaController extends Controller {
         
     }
 
+    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -100,24 +102,55 @@ class MargondaController extends Controller {
         $join_tables->warehouse_price = $request->input( 'warehouse_price' );
         $join_tables->save();
 
-        $extradata = new ExtraMargonda();
-        $extradata->user_id = Auth::user()->id;
-        $extradata->date = $request->input( 'date' );
-        $extradata->gas = $request->input( 'gas' );
-        $extradata->parking = $request->input( 'parking' );
-        $extradata->gs_id = $request->input( 'gs_name' );
-        $extradata->gs_price = $request->input( 'gs_price' );
-        $extradata->utility_id = $request->input( 'utility_name' );
-        $extradata->utility_price = $request->input( 'utility_price' );
-        $extradata->adm_id = $request->input( 'adm_name' );
-        $extradata->adm_price = $request->input( 'adm_price' );
-        $extradata->etc_id = $request->input( 'etc_name' );
-        $extradata->etc_price = $request->input( 'etc_price' );
-        $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
-        $extradata->mtd = ExtraMargonda::calculateMTD($request->total);
-        $extradata->save();
+        $extradata = ExtraMargonda::find($request->id);
 
-        return redirect()->back();
+        if ( $extradata ) {
+            $extradata = new ExtraMargonda;
+            $extradata->user_id = Auth::user()->id;
+            $extradata->date = $request->input( 'date' );
+            $extradata->gas = $request->input( 'gas' );
+            $extradata->parking = $request->input( 'parking' );
+            $extradata->gs_id = $request->input( 'gs_name' );
+            $extradata->gs_price = $request->input( 'gs_price' );
+            $extradata->utility_id = $request->input( 'utility_name' );
+            $extradata->utility_price = $request->input( 'utility_price' );
+            $extradata->adm_id = $request->input( 'adm_name' );
+            $extradata->adm_price = $request->input( 'adm_price' );
+            $extradata->etc_id = $request->input( 'etc_name' );
+            $extradata->etc_price = $request->input( 'etc_price' );
+            $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );;
+            $extradata->mtd = DB::table('extra_margonda')->sum('total');
+            $extradata->save();
+
+            return redirect()->back();
+        } else {
+            // Mengambil data field mtd yang terakhir kali di inputkan
+            // Pake code ini bisa
+            // $lastMtd = Example::orderBy('id', 'desc')->value('mtd');
+            // Pake code ini pun juga bisa
+            $lastMtd = ExtraMargonda::latest('id')->first()->mtd;
+            $newTotal = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
+            
+            $extradata = new ExtraMargonda([
+                'user_id' => Auth::user()->id,
+                'date' => $request->input( 'date' ),
+                'gas' => $request->input( 'gas' ),
+                'parking' => $request->input( 'parking' ),
+                'gs_id' => $request->input( 'gs_name' ),
+                'gs_price' => $request->input( 'gs_price' ),
+                'utility_id' => $request->input( 'utility_name' ),
+                'utility_price' => $request->input( 'utility_price' ),
+                'adm_id' => $request->input( 'adm_name' ),
+                'adm_price' => $request->input( 'adm_price' ),
+                'etc_id' => $request->input( 'etc_name' ),
+                'etc_price' => $request->input( 'etc_price' ),
+                'total' => $newTotal,
+                'mtd' => $lastMtd + $newTotal,
+            ]);
+            $extradata->save();
+
+            return redirect()->back();
+        }
     }
 
     /**
