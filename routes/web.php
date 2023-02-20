@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\Warehouse\WarehousesController;
 
 use App\Http\Controllers\Dashboard\AllReports\ReportsController;
 use App\Http\Controllers\Dashboard\AllReports\MargondaReport\MargondaReportController;
+use App\Http\Controllers\Dashboard\LaporanMargondaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,12 +44,14 @@ Route::middleware('auth')->group(function () {
         Route::resource( '/harian-gudang', WarehouseController::class );
 
         /* Route laporan gudang */
-        
+
         /* Route seluruh laporan */
         Route::get( '/semua-laporan', [ReportsController::class, 'index'] )->name( 'allreports' );
 
-        Route::get( '/semua-laporan/laporan-margonda', [MargondaReportController::class, 'index'] )->name( 'margondareport' );
-        Route::get( '/semua-laporan/laporan-margonda/view-pdf-margonda', [MargondaReportController::class, 'cetakPDF'] )->name( 'viewPDFMargonda' );
+        Route::get( '/semua-laporan/laporan-harian-margonda', [MargondaReportController::class, 'index'] )->name( 'margondareport' );
+        Route::get( '/semua-laporan/laporan-harian-margonda/view-pdf-margonda', [MargondaReportController::class, 'cetakPDF'] )->name( 'viewPDFMargonda' );
+
+        Route::get( '/laporan-margonda', [LaporanMargondaController::class, 'index'] )->name( 'margonda' );
     });
 });
 

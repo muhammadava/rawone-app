@@ -27,7 +27,7 @@
         <li class="nav-item">
           <a href="" class="nav-link with-sub"><i class="icon ion-md-paper pr-2"></i>Laporan Outlet</a>
           <nav class="az-menu-sub">
-            <a href="" class="nav-link">Outlet Margonda</a>
+            <a href="{{ route( 'margonda' ) }}" class="nav-link">Outlet Margonda</a>
             <a href="" class="nav-link">Outlet Simatupang</a>
             <a href="" class="nav-link">Outlet Kelapa Gading</a>
           </nav>
