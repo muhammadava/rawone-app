@@ -12,7 +12,9 @@ use App\Http\Controllers\Dashboard\Warehouse\WarehousesController;
 use App\Http\Controllers\Dashboard\AllReports\ReportsController;
 use App\Http\Controllers\Dashboard\AllReports\MargondaReport\MargondaReportController;
 
-use App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse\MargondaWarehouseReportController;
+use App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse\MargondaSaleController;
+use App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse\MargondaShoppingController;
+use App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse\MargondaCostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +54,9 @@ Route::middleware('auth')->group(function () {
         Route::get( '/semua-laporan/laporan-harian-margonda', [MargondaReportController::class, 'index'] )->name( 'margondareport' );
         Route::get( '/semua-laporan/laporan-harian-margonda/view-pdf-margonda', [MargondaReportController::class, 'cetakPDF'] )->name( 'viewPDFMargonda' );
 
-        Route::get( '/laporan-margonda', [MargondaWarehouseReportController::class, 'index'] )->name( 'margonda' );
+        Route::resource( '/laporan-penjualan-margonda', MargondaSaleController::class );
+        Route::resource( '/laporan-belanja-margonda', MargondaShoppingController::class );
+        Route::resource( '/laporan-biaya-margonda', MargondaCostController::class );
     });
 });
 

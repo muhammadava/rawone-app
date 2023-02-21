@@ -10,6 +10,13 @@
     h2 {
       color: black;
     }
+
+    li {
+      display: inline-block;
+    }
+    li a {
+      color: black
+    }
   </style>  
 @endpush
 
@@ -22,6 +29,12 @@
           <span>Form Elements</span>
         </div>
         <h2 class="az-content-title">Data Margonda</h2>
+
+        <ul>
+          <li><a href="/dashboard/laporan-penjualan-margonda">Penjualan</a></li> |
+          <li><a href="/dashboard/laporan-belanja-margonda">Belanja</a></li> |
+          <li><a href="/dashboard/laporan-biaya-margonda">Biaya</a></li>
+        </ul>
 
         <div class="card">
         <div class="card-header d-flex bd-highlight mb-3">
@@ -127,6 +140,16 @@
                         <td>{{ $data->etc_price }}</td>
                         <td>{{ $data->total }}</td>
                         <td>{{ $data->mtd }}</td>
+                    @endforeach
+                    @foreach( $transactions as $transaction )
+                        <td>{{ $transaction->cash_deposit }}</td>
+                        <td>{{ $transaction->cash }}</td>
+                        <td>{{ $transaction->edc }}</td>
+                        <td>{{ $transaction->goresto }}</td>
+                        <td>{{ $transaction->gopay }}</td>
+                        <td>{{ $transaction->grabfood }}</td>
+                        <td>{{ $transaction->ovo }}</td>
+                        <td>{{ $transaction->shopeefood }}</td>
                       </tr>
                     </tbody>
                     @endforeach
