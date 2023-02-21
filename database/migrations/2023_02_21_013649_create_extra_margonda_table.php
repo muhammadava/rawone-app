@@ -39,34 +39,34 @@ return new class extends Migration {
                 ->constrained( 'etc_margonda' )
                 ->onDelete( 'cascade' );
             $table->integer( 'etc_price' );
-
-            $table->foreignId( 'cash_deposit_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'cash_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'edc_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'goresto_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'gopay_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'grabfood_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'ovo_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-            $table->foreignId( 'shopeefood_id' )
-                ->constrained( 'transactions' )
-                ->onDelete( 'cascade' );
-
             $table->integer( 'total' );
             $table->integer( 'mtd' );
+
+            // $table->foreignId( 'cash_deposit_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'cash_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'edc_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'goresto_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'gopay_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'grabfood_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'ovo_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            // $table->foreignId( 'shopeefood_id' )
+            //     ->constrained( 'transactions' )
+            //     ->onDelete( 'cascade' );
+            
             $table->timestamps();
         });
     }

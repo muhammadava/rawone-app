@@ -53,6 +53,9 @@ class MargondaSaleController extends Controller
         $transaction->shopeefood = $request->shopeefood;
         $transaction->save();
 
+        $last_updated = Transaction::latest('last_updated_at')->first();
+        $last_updated->update(['last_updated_at' => now()]);
+
         return redirect()->back();
     }
 
