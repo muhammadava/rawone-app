@@ -40,6 +40,31 @@ return new class extends Migration {
                 ->onDelete( 'cascade' );
             $table->integer( 'etc_price' );
 
+            $table->foreignId( 'cash_deposit_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'cash_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'edc_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'goresto_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'gopay_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'grabfood_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'ovo_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+            $table->foreignId( 'shopeefood_id' )
+                ->constrained( 'transactions' )
+                ->onDelete( 'cascade' );
+
             $table->integer( 'total' );
             $table->integer( 'mtd' );
             $table->timestamps();
@@ -51,8 +76,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('extra_margonda');
     }
 };
