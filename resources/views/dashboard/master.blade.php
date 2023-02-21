@@ -49,6 +49,11 @@
 
     <!-- azia CSS -->
     <link rel="stylesheet" href="{{ asset('../css/azia.css') }}">
+    <style>
+      body {
+        overflow-x: hidden
+      }
+    </style>
     @stack( 'styles' )
 
   </head>
