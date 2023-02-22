@@ -16,6 +16,6 @@ class ExtraMargonda extends Model {
     ];
 
     public function Transaction() {
-        return $this->hasOne(Transaction::class, 'extramargonda_id', 'id');
+        return $this->hasOne(Transaction::class);
     }
 }

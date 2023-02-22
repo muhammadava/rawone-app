@@ -10,18 +10,15 @@ use Illuminate\Support\Facades\DB;
 use App\Models\ExtraMargonda;
 use App\Models\Transaction;
 
-class MargondaSaleController extends Controller
-{
+class MargondaSaleController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $sales = ExtraMargonda::all();
-        $transactions = Transaction::latestFirst()->get();
-        return view( 'dashboard.outletReports.margondaReport.margonda', compact('sales', 'transactions') );
+        return view( 'dashboard.outletReports.margondaReport.margonda', ['sales' => $sales] );
     }
 
     /**

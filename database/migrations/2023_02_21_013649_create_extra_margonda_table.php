@@ -41,8 +41,7 @@ return new class extends Migration {
             $table->integer( 'etc_price' );
             $table->integer( 'total' );
             $table->integer( 'mtd' );
-            $table->unsignedBigInteger('transaction_id')->unique();
-            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
+            $table->foreignId('transaction_id')->constrained('transactions');
 
             // $table->foreignId( 'cash_deposit_id' )
             //     ->constrained( 'transactions' )

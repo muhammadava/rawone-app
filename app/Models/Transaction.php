@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\extraMargonda;
+use App\Models\ExtraMargonda;
 
 class Transaction extends Model {
     use HasFactory;
@@ -15,7 +15,7 @@ class Transaction extends Model {
         'cash_deposit', 'cash', 'edc', 'goresto', 'gopay', 'grabfood', 'ovo', 'shopeefood'
     ];
 
-    public function extraMargonda() {
-    	return $this->belongsTo(extraMargonda::class, 'id');
+    public function ExtraMargonda() {
+    	return $this->belongsTo(ExtraMargonda::class);
     }
 }
