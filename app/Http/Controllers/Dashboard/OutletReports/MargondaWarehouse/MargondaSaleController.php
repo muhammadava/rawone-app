@@ -20,7 +20,7 @@ class MargondaSaleController extends Controller
     public function index()
     {
         $sales = ExtraMargonda::all();
-        $transactions = Transaction::all();
+        $transactions = Transaction::latestFirst()->get();
         return view( 'dashboard.outletReports.margondaReport.margonda', compact('sales', 'transactions') );
     }
 
@@ -52,9 +52,6 @@ class MargondaSaleController extends Controller
         $transaction->ovo = $request->ovo;
         $transaction->shopeefood = $request->shopeefood;
         $transaction->save();
-
-        $last_updated = Transaction::latest('last_updated_at')->first();
-        $last_updated->update(['last_updated_at' => now()]);
 
         return redirect()->back();
     }

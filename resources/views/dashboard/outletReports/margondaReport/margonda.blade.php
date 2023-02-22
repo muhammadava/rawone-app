@@ -125,6 +125,7 @@
                       </tr>
                     </thead>
                     @foreach( $sales as $sale => $data )
+                    @foreach( $transactions as $transaction )
                     <tbody align="center">
                       <tr>
                         <td>{{ $data->date }}</td>
@@ -140,8 +141,6 @@
                         <td>{{ $data->etc_price }}</td>
                         <td>{{ $data->total }}</td>
                         <td>{{ $data->mtd }}</td>
-                    @endforeach
-                    @foreach( $transactions as $transaction )
                         <td>{{ $transaction->cash_deposit }}</td>
                         <td>{{ $transaction->cash }}</td>
                         <td>{{ $transaction->edc }}</td>
@@ -152,6 +151,7 @@
                         <td>{{ $transaction->shopeefood }}</td>
                       </tr>
                     </tbody>
+                    @endforeach
                     @endforeach
                   </table>
                 </div><!-- table-responsive -->

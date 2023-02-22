@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Transaction;
+
 class ExtraMargonda extends Model {
     use HasFactory;
     protected $table = 'extra_margonda';
@@ -12,4 +14,8 @@ class ExtraMargonda extends Model {
     protected $fillable = [
         'user_id', 'date', 'gas', 'parking', 'gs_id', 'gs_price', 'utility_id', 'utility_price', 'adm_id', 'adm_price', 'etc_id', 'etc_price', 'total', 'mtd'
     ];
+
+    public function Transaction() {
+        return $this->hasOne(Transaction::class, 'extramargonda_id', 'id');
+    }
 }
