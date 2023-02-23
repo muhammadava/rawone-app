@@ -63,7 +63,7 @@
                     @foreach( $sales as $sale => $data )
                     <tbody align="center">
                       <tr>
-                        <td>{{ $data->date }}</td>
+                        <td>{{ $data->extramargonda_date }}</td>
                         <td>{{ $data->gas }}</td>
                         <td>{{ $data->parking }}</td>
                         <td>{{ $data->gs_id }}</td>
