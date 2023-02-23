@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MargondaCostController extends Controller
-{
+use App\Models\ExtraMargonda;
+
+class MargondaCostController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $sales = ExtraMargonda::all();
+        return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales] );
     }
 
     /**
@@ -22,9 +23,8 @@ class MargondaCostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        
     }
 
     /**
@@ -33,9 +33,8 @@ class MargondaCostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        
     }
 
     /**

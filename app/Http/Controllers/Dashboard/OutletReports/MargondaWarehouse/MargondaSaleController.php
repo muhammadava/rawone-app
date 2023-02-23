@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Models\ExtraMargonda;
-use App\Models\Transaction;
-
 class MargondaSaleController extends Controller {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,7 @@ class MargondaSaleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $sales = ExtraMargonda::all();
-        return view( 'dashboard.outletReports.margondaReport.margonda', ['sales' => $sales] );
+        return view( 'dashboard.outletReports.margondaReport.margondaSale' );
     }
 
     /**
@@ -37,20 +33,8 @@ class MargondaSaleController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $transaction = new Transaction();
-        $transaction->cash_deposit = $request->cash_deposit;
-        $transaction->cash = $request->cash;
-        $transaction->edc = $request->edc;
-        $transaction->goresto = $request->goresto;
-        $transaction->gopay = $request->gopay;
-        $transaction->grabfood = $request->grabfood;
-        $transaction->ovo = $request->ovo;
-        $transaction->shopeefood = $request->shopeefood;
-        $transaction->save();
+    public function store(Request $request) {
 
-        return redirect()->back();
     }
 
     /**

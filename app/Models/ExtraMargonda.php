@@ -14,8 +14,4 @@ class ExtraMargonda extends Model {
     protected $fillable = [
         'user_id', 'date', 'gas', 'parking', 'gs_id', 'gs_price', 'utility_id', 'utility_price', 'adm_id', 'adm_price', 'etc_id', 'etc_price', 'total', 'mtd'
     ];
-
-    public function Transaction() {
-        return $this->hasOne(Transaction::class);
-    }
 }

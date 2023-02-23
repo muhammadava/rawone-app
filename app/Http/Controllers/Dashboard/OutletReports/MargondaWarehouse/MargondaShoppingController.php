@@ -5,16 +5,14 @@ namespace App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MargondaShoppingController extends Controller
-{
+class MargondaShoppingController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view( 'dashboard.outletReports.margondaReport.margondaShopping' );
     }
 
     /**
