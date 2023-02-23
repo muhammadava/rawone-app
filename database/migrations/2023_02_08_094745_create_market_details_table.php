@@ -13,9 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('market_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId( 'user_id' )
-                ->constrained( 'users' )
-                ->onDelete( 'cascade' );
+            $table->date( 'date' );
             $table->foreignId( 'markets_id' )
                 ->constrained( 'markets' )
                 ->onDelete( 'cascade' );

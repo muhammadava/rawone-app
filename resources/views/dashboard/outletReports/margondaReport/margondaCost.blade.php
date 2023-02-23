@@ -36,19 +36,14 @@
         </ul>
 
         <div class="card">
-        <div class="card-header d-flex bd-highlight mb-3">
-          <a href="" class="btn btn-primary bd-highlight">
-            <i class="icon ion-ios-print"></i>
-          </a>
+        <div class="card-header">
+          <h1 class="d-flex justify-content-center">Penjualan</h1>
         </div>
           <div class="card-body">
 
                 <div class="table-responsive">
                   <table class="table table-hover mg-b-0">
                     <thead align="center">
-                      <tr>
-                        <th colspan="21"><h2 align="center" class="mg-b-20">Penjualan</h2></th>
-                      </tr>
                       <tr>
                         <th>Tanggal</th>
                         <th>Bensin</th>
