@@ -63,9 +63,13 @@
                     </button>
                   </div>
                   <form action="{{ route( 'margonda.store' ) }}" method="POST">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="modal-body"><!-- start modal body -->
-                      <input type="date" class="form-control" name="date" value="{{ date('Y-m-d', strtotime(now())) }}" readonly>
+                      <input type="hidden" class="form-control" name="market_date" value="{{ date('Y-m-d', strtotime(now())) }}">
+                      <input type="hidden" class="form-control" name="outlet_date" value="{{ date('Y-m-d', strtotime(now())) }}">
+                      <input type="hidden" class="form-control" name="warehouse_date" value="{{ date('Y-m-d', strtotime(now())) }}">
+                      <input type="hidden" class="form-control" name="extramargonda_date" value="{{ date('Y-m-d', strtotime(now())) }}">
+                      <input type="date" class="form-control" value="{{ date('Y-m-d', strtotime(now())) }}" readonly>
                       <hr>
                       <div class="row"><!-- start row -->
                         

@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('outlet_details', function (Blueprint $table) {
             $table->id();
-            $table->date( 'date' );
+            $table->date( 'outlet_date' );
             $table->foreignId( 'outlets_id' )
                 ->constrained( 'outlets' )
                 ->onDelete( 'cascade' );

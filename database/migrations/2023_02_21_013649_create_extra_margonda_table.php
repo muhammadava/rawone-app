@@ -13,10 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('extra_margonda', function (Blueprint $table) {
             $table->id();
-            $table->foreignId( 'user_id' )
-                ->constrained( 'users' )
-                ->onDelete( 'cascade' );
-            $table->date( 'date' );
+            $table->date( 'extramargonda_date' );
             $table->integer( 'gas' );
             $table->integer( 'parking' );
 

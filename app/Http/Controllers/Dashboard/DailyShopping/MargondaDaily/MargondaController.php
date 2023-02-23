@@ -75,16 +75,19 @@ class MargondaController extends Controller {
      */
     public function store(Request $request) {
         $join_markets = new MarketDetail;
+        $join_markets->market_date = $request->input( 'market_date' );
         $join_markets->markets_id = $request->input( 'market_name' );
         $join_markets->market_price = $request->input( 'market_price' );
         $join_markets->save();
 
         $join_outlets = new OutletDetail;
+        $join_outlets->outlet_date = $request->input( 'outlet_date' );
         $join_outlets->outlets_id = $request->input( 'outlet_name' );
         $join_outlets->outlet_price = $request->input( 'outlet_price' );
         $join_outlets->save();
     
         $join_warehouses = new WarehouseDetail;
+        $join_warehouses->warehouse_date = $request->input( 'warehouse_date' );
         $join_warehouses->warehouses_id = $request->input( 'warehouse_name' );
         $join_warehouses->warehouse_price = $request->input( 'warehouse_price' );
         $join_warehouses->save();
@@ -106,7 +109,7 @@ class MargondaController extends Controller {
         $newTotal = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
 
         $extradata = new ExtraMargonda;
-        $extradata->date = $request->input( 'date' );
+        $extradata->extramargonda_date = $request->input( 'extramargonda_date' );
         $extradata->gas = $request->input( 'gas' );
         $extradata->parking = $request->input( 'parking' );
         $extradata->gs_id = $request->input( 'gs_name' );
@@ -118,7 +121,7 @@ class MargondaController extends Controller {
         $extradata->etc_id = $request->input( 'etc_name' );
         $extradata->etc_price = $request->input( 'etc_price' );
         $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );;
-        $extradata->mtd = DB::table('extra_margonda')->sum('total');
+        $extradata->mtd = $lastMtd + $newTotal;
         $extradata->save();
 
         return redirect()->back();

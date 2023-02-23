@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('warehouse_details', function (Blueprint $table) {
             $table->id();
-            $table->date( 'date' );
+            $table->date( 'warehouse_date' );
             $table->foreignId( 'warehouses_id' )
                 ->constrained( 'warehouses' )
                 ->onDelete( 'cascade' );
