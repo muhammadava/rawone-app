@@ -105,8 +105,8 @@ class MargondaController extends Controller {
         // Pake code ini bisa
         // $lastMtd = Example::orderBy('id', 'desc')->value('mtd');
         // Pake code ini pun juga bisa
-        $lastMtd = ExtraMargonda::latest('id')->first()->mtd;
-        $newTotal = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
+        // $lastMtd = ExtraMargonda::latest('id')->first()->mtd;
+        // $newTotal = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
 
         $extradata = new ExtraMargonda;
         $extradata->extramargonda_date = $request->input( 'extramargonda_date' );
@@ -120,8 +120,7 @@ class MargondaController extends Controller {
         $extradata->adm_price = $request->input( 'adm_price' );
         $extradata->etc_id = $request->input( 'etc_name' );
         $extradata->etc_price = $request->input( 'etc_price' );
-        $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );;
-        $extradata->mtd = $lastMtd + $newTotal;
+        $extradata->total = $request->input( 'gas' ) + $request->input( 'parking' ) + $request->input( 'gs_price' ) + $request->input( 'utility_price' ) + $request->input( 'adm_price' ) + $request->input( 'etc_price' );
         $extradata->save();
 
         return redirect()->back();

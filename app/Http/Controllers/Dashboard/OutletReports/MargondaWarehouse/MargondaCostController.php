@@ -25,7 +25,7 @@ class MargondaCostController extends Controller {
 
         $totals = ExtraMargonda::sum('total');
 
-        return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales], ['totals' => $totals] );
+        return view( 'dashboard.outletReports.margondaReport.margondaCost', compact( 'sales', 'totals' ));
     }
 
     /**

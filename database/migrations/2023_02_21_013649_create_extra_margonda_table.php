@@ -37,7 +37,6 @@ return new class extends Migration {
                 ->onDelete( 'cascade' );
             $table->integer( 'etc_price' );
             $table->integer( 'total' );
-            $table->integer( 'mtd' );
 
             // $table->foreignId( 'cash_deposit_id' )
             //     ->constrained( 'transactions' )
