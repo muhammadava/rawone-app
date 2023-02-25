@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\OutletReports\MargondaWarehouse;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\ExtraMargonda;
 
@@ -14,8 +15,17 @@ class MargondaCostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $sales = ExtraMargonda::all();
-        return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales] );
+        $sales = DB::table('extra_margonda')
+                ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
+                ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
+                ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
+                ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
+                ->take(7)
+                ->get();
+
+        $totals = ExtraMargonda::sum('total');
+
+        return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales], ['totals' => $totals] );
     }
 
     /**
