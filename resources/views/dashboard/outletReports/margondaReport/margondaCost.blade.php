@@ -61,29 +61,34 @@
                       </tr>
                     </thead>
                     @foreach( $sales as $sale => $data )
-                    <tbody align="center">
-                      <tr>
-                        <td>{{ $data->extramargonda_date }}</td>
-                        <td>{{ $data->gas }}</td>
-                        <td>{{ $data->parking }}</td>
-                        <td>{{ $data->gs_name }}</td>
-                        <td>{{ $data->gs_price }}</td>
-                        <td>{{ $data->utility_name }}</td>
-                        <td>{{ $data->utility_price }}</td>
-                        <td>{{ $data->adm_name }}</td>
-                        <td>{{ $data->adm_price }}</td>
-                        <td>{{ $data->etc_name }}</td>
-                        <td>{{ $data->etc_price }}</td>
-                        <td>{{ $data->total }}</td>
-                      </tr>
-                    </tbody>
+                      <tbody align="center">
+                        @if ($data === 'hr')
+                          <tr>
+                              <td colspan="3">Syntax "hr"</td>
+                          </tr>
+                        @else
+                        <tr>
+                          <td>{{ $data->extramargonda_date }}</td>
+                          <td>{{ $data->gas }}</td>
+                          <td>{{ $data->parking }}</td>
+                          <td>{{ $data->gs_name }}</td>
+                          <td>{{ $data->gs_price }}</td>
+                          <td>{{ $data->utility_name }}</td>
+                          <td>{{ $data->utility_price }}</td>
+                          <td>{{ $data->adm_name }}</td>
+                          <td>{{ $data->adm_price }}</td>
+                          <td>{{ $data->etc_name }}</td>
+                          <td>{{ $data->etc_price }}</td>
+                          <td>{{ $data->total }}</td>
+                        </tr>
+                      </tbody>
+                      @endif
                     @endforeach
                     <tr>
                       <td colspan="12" align="right">Rp. {{ number_format($totals) }}</td>
                       <td>sa</td>
                     </tr>
                   </table>
-                  {{ $sales->links() }}
                 </div><!-- table-responsive -->
 
           </div><!-- end card body -->

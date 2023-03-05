@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\ExtraMargonda;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class MargondaCostController extends Controller {
     /**
@@ -16,23 +17,48 @@ class MargondaCostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $sales = DB::table('extra_margonda')
-            ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
-            ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
-            ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
-            ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
-            ->get();
+        // Mendapatkan waktu saat ini
+        $now = now();
+
+        // Membuat variabel untuk menampung data yang akan ditampilkan
+        $data = collect([]);
+
+        // Looping untuk setiap bulan
+        for ($i = 0; $i < 12; $i++) {
+
+            // Menambahkan 1 tahun ke waktu saat ini
+            $date = $now->addYear();
+
+            // Menambahkan 1 bulan ke waktu saat ini
+            $date = $date->addMonth();
+
+            // Mendapatkan awal dan akhir dari bulan tersebut
+            $startOfMonth = $date->startOfMonth();
+            $endOfMonth = $date->endOfMonth();
+
+            // Mendapatkan data dari database berdasarkan rentang tanggal
+            $dataOfMonth = ExtraMargonda::whereBetween('created_at', [$startOfMonth, $endOfMonth])->get();
+
+            // Menambahkan data ke dalam variabel data
+            $sales = $data->concat($dataOfMonth);
+            
+            // Jika hari saat ini adalah hari minggu
+            if ($now->dayOfWeek === 0) {
+                // Menambahkan syntax "hr" ke variabel data
+                $sales->push('hr');
+            }
+        }
         
-        $sales = ExtraMargonda::paginate(31);
+        // Membuat pagination dengan 10 data per halaman
+        $sales = DB::table('extra_margonda')
+                ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
+                ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
+                ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
+                ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
+                ->paginate(31);
         $totals = ExtraMargonda::sum('total');
-
+        
         return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales, 'totals' => $totals]);
-    }
-
-    private function getDataByMonth($date) {
-        // mengambil data dari database berdasarkan bulan dan tahun tertentu
-        $data = ExtraMargonda::all();
-        return $data;
     }
 
     /**
