@@ -16,35 +16,14 @@ class MargondaCostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $date = Carbon::now()->subYear(); // mengambil waktu saat ini, dikurangi 1 tahun
-        $sales = collect(); // membuat koleksi kosong untuk menyimpan data
-
-        // looping untuk mengambil data setiap satu bulan
-        for ($i = 0; $i < 12; $i++) {
-            $sales = $sales->merge($this->getDataByMonth($date));
-            $date = $date->addMonth();
-        }
-        $sales = ExtraMargonda::paginate(12);
-
-        // mengambil tanggal saat ini dan menambahkan kode "hr" pada setiap hari Minggu
-        $now = Carbon::now();
-        $sales->getCollection()->transform(function ($item) use ($now) {
-            $date = Carbon::parse($item['date']);
-            if ($date->isSunday()) {
-                $item['date'] = $date->format('Y M d') . ' hr';
-            } else {
-                $item['date'] = $date->format('Y M d');
-            }
-            return $item;
-        });
-
         $sales = DB::table('extra_margonda')
-                ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
-                ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
-                ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
-                ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
-                ->get();
-
+            ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
+            ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
+            ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
+            ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
+            ->get();
+        
+        $sales = ExtraMargonda::paginate(31);
         $totals = ExtraMargonda::sum('total');
 
         return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales, 'totals' => $totals]);

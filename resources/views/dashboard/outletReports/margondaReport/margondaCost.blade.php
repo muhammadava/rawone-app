@@ -83,6 +83,7 @@
                       <td>sa</td>
                     </tr>
                   </table>
+                  {{ $sales->links() }}
                 </div><!-- table-responsive -->
 
           </div><!-- end card body -->
