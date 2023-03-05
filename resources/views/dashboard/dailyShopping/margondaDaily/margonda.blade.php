@@ -164,7 +164,6 @@
                             <input class="form-control mg-b-20" name="parking" placeholder="Masukan jika ada" type="text">
                           </div>
                           <input class="form-control mg-b-20" name="total" type="hidden">
-                          <input class="form-control mg-b-20" name="mtd" type="hidden">
                         </div><!-- end col -->
 
                       </div><!-- end row -->
