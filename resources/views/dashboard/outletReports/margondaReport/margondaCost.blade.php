@@ -62,11 +62,6 @@
                     </thead>
                     @foreach( $sales as $sale => $data )
                       <tbody align="center">
-                        @if ($data === 'hr')
-                          <tr>
-                              <td colspan="3">Syntax "hr"</td>
-                          </tr>
-                        @else
                         <tr>
                           <td>{{ $data->extramargonda_date }}</td>
                           <td>{{ $data->gas }}</td>
@@ -82,7 +77,6 @@
                           <td>{{ $data->total }}</td>
                         </tr>
                       </tbody>
-                      @endif
                     @endforeach
                     <tr>
                       <td colspan="12" align="right">Rp. {{ number_format($totals) }}</td>
@@ -97,3 +91,11 @@
     </div><!-- container -->
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(function() {
+            $('td:contains("Sunday")').text('hr');
+        });
+    </script>
+@endpush
