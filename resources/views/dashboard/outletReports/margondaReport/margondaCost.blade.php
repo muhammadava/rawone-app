@@ -76,6 +76,7 @@
                           <td>{{ $data->etc_price }}</td>
                           <td>{{ $data->total }}</td>
                         </tr>
+                        <tr @if($data->extramargonda_date->isSunday()) hr @endif >
                       </tbody>
                     @endforeach
                     <tr>
@@ -91,11 +92,3 @@
     </div><!-- container -->
 
 @endsection
-
-@push('scripts')
-    <script>
-        $(function() {
-            $('td:contains("Sunday")').text('hr');
-        });
-    </script>
-@endpush

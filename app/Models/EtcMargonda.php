@@ -10,9 +10,9 @@ use App\Models\ExtraMargonda;
 class EtcMargonda extends Model {
     use HasFactory;
     protected $table = 'etc_margonda';
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function ExtraMargonda() {
-        return $this->belongsTo( ExtraMargonda::class );
+        return $this->belongsTo( ExtraMargonda::class, 'etc_id' );
     }
 }

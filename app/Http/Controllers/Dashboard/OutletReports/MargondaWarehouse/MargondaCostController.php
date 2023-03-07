@@ -20,8 +20,12 @@ class MargondaCostController extends Controller {
         $now = Carbon::now();
         $oneYearLater = $now->copy()->addYear();
 
-        $sales = ExtraMargonda::whereBetween('created_at', [$now, $oneYearLater])
-                ->orderBy('created_at', 'desc')
+        $sales = DB::table('extra_margonda')
+                // ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
+                // ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
+                // ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
+                // ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
+                ->whereBetween('extramargonda_date', [$now, $oneYearLater])
                 ->paginate(31);
 
         $totals = ExtraMargonda::sum('total');

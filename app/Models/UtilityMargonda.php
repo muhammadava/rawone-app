@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UtilityMargonda extends Model {
     use HasFactory;
     protected $table = 'utility_margonda';
-    public $timestamps = false;
+    public $timestamps = true;
+
+    public function ExtraMargonda() {
+        return $this->belongsTo( ExtraMargonda::class, 'utility_id' );
+    }
 }
