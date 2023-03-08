@@ -17,25 +17,22 @@ class MargondaCostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        // Hitung waktu 1 tahun kemudian
-        $start_date = Carbon::now();
-        $end_date = Carbon::now()->addYear();
+        $sales = DB::table('extra_margonda')   
+                ->join('gs_margonda', 'extra_margonda.gs_id', '=', 'gs_margonda.id')
+                ->join('utility_margonda', 'extra_margonda.utility_id', '=', 'utility_margonda.id')
+                ->join('adm_margonda', 'extra_margonda.adm_id', '=', 'adm_margonda.id')
+                ->join('etc_margonda', 'extra_margonda.etc_id', '=', 'etc_margonda.id')
+                ->where('extra_margonda.extramargonda_date', '>=', date('Y-m-d', strtotime('1 January')))
+                ->where('extra_margonda.extramargonda_date', '<=', date('Y-m-d', strtotime('31 December')))
+                ->orderBy('extra_margonda.extramargonda_date', 'asc')
+                ->paginate(31);
 
-        $sales = DB::table('extra_margonda')    
-                // ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
-                // ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
-                // ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
-                // ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
-                ->whereBetween('extra_margonda.extramargonda_date', [$start_date, $end_date])
-                ->orderBy('extra_margonda.extramargonda_date', 'desc');
-
-        $sales = $sales->paginate(31);
-
-        // Looping data untuk menambahkan tag "hr" pada hari Minggu
-        foreach ($sales as $sale =>$data) {
-            $date = Carbon::parse($data->extramargonda_date);
-            if ($date->dayOfWeek === Carbon::SUNDAY) {
-                $data->tag = 'hr';
+        // Menambahkan tag "hr" pada setiap hari Minggu
+        foreach ($sales as $sale => $data) {
+            if (date('N', strtotime($data->extramargonda_date)) == 7) {
+                $data->tag = "<hr>";
+            } else {
+                $data->tag = "";
             }
         }
 

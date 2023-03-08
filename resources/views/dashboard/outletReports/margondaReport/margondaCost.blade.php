@@ -37,7 +37,8 @@
 
         <div class="card">
         <div class="card-header">
-          <h1 class="d-flex justify-content-center">Penjualan</h1>
+          <h1 class="d-flex justify-content-center">Penjualan</h1>  
+        </div>
         </div>
           <div class="card-body">
 
@@ -76,6 +77,9 @@
                           <td>{{ $data->etc_price }}</td>
                           <td>{{ $data->total }}</td>
                           <td>{{ $post->tag ?? '' }}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="4" style="text-align:center;">{{ $data->tag }}</td>
                         </tr>
                       </tbody>
                     @endforeach
