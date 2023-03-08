@@ -16,18 +16,22 @@ class ExtraMargonda extends Model {
     ];
 
     public function GsMargonda() {
-        return $this->hasOne( GsMargonda::class );
+        return $this->hasOne( GsMargonda::class, 'id', 'gs_id' );
     }
 
     public function UtilityMargonda() {
-        return $this->hasOne( UtilityMargonda::class );
+        return $this->hasOne( UtilityMargonda::class, 'id', 'utility_id' );
     }
 
     public function AdmMargonda() {
-        return $this->hasOne( AdmMargonda::class );
+        return $this->hasOne( AdmMargonda::class, 'id', 'adm_id' );
     }
 
     public function EtcMargonda() {
-        return $this->hasOne( EtcMargonda::class );
+        return $this->hasOne( EtcMargonda::class, 'id', 'etc_id' );
+    }
+
+    public function getCreatedAttribute(){
+        return $this->attributes['created_at'];
     }
 }

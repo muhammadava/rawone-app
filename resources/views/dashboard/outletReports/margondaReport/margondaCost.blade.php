@@ -75,8 +75,8 @@
                           <td>{{ $data->etc_name }}</td>
                           <td>{{ $data->etc_price }}</td>
                           <td>{{ $data->total }}</td>
+                          <td>{{ $post->tag ?? '' }}</td>
                         </tr>
-                        <tr @if($data->extramargonda_date->isSunday()) hr @endif >
                       </tbody>
                     @endforeach
                     <tr>

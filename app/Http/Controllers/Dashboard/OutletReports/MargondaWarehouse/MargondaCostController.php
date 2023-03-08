@@ -17,20 +17,31 @@ class MargondaCostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $now = Carbon::now();
-        $oneYearLater = $now->copy()->addYear();
+        // Hitung waktu 1 tahun kemudian
+        $start_date = Carbon::now();
+        $end_date = Carbon::now()->addYear();
 
-        $sales = DB::table('extra_margonda')
+        $sales = DB::table('extra_margonda')    
                 // ->join('gs_margonda', 'gs_margonda.id', '=', 'extra_margonda.gs_id')
                 // ->join('utility_margonda', 'utility_margonda.id', '=', 'extra_margonda.utility_id')
                 // ->join('adm_margonda', 'adm_margonda.id', '=', 'extra_margonda.adm_id')
                 // ->join('etc_margonda', 'etc_margonda.id', '=', 'extra_margonda.etc_id')
-                ->whereBetween('extramargonda_date', [$now, $oneYearLater])
-                ->paginate(31);
+                ->whereBetween('extra_margonda.extramargonda_date', [$start_date, $end_date])
+                ->orderBy('extra_margonda.extramargonda_date', 'desc');
+
+        $sales = $sales->paginate(31);
+
+        // Looping data untuk menambahkan tag "hr" pada hari Minggu
+        foreach ($sales as $sale =>$data) {
+            $date = Carbon::parse($data->extramargonda_date);
+            if ($date->dayOfWeek === Carbon::SUNDAY) {
+                $data->tag = 'hr';
+            }
+        }
 
         $totals = ExtraMargonda::sum('total');
         
-        return view( 'dashboard.outletReports.margondaReport.margondaCost', ['sales' => $sales, 'totals' => $totals]);
+        return view( 'dashboard.outletReports.margondaReport.margondaCost', compact('sales', 'totals'));
     }
 
     /**
