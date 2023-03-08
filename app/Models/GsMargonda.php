@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class GsMargonda extends Model {
     use HasFactory;
     protected $table = 'gs_margonda';
+    protected $guarded = [];
     public $timestamps = true;
 
-    public function ExtraMargonda() {
-        return $this->belongsTo( ExtraMargonda::class, 'gs_id' );
+    public function extraMargonda() {
+        return $this->belongsTo( 'App\ExtraMargonda' );
     }
 }

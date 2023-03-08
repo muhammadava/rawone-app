@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class AdmMargonda extends Model {
     use HasFactory;
     protected $table = 'adm_margonda';
+    protected $guarded = [];
     public $timestamps = true;
 
-    public function ExtraMargonda() {
-        return $this->belongsTo( ExtraMargonda::class, 'adm_id' );
+    public function extraMargonda() {
+        return $this->belongsTo( 'App\ExtraMargonda' );
     }
 }
